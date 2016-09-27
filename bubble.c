@@ -31,7 +31,7 @@ int bub_sort(int a[], int n)
 		}
 	}
 }
-
+/*
 int bub_sort2(int a[], int n)
 {
 	int i,j;
@@ -43,7 +43,7 @@ int bub_sort2(int a[], int n)
 		}
 	}
 }
-
+*/
 
 int main()
 {
