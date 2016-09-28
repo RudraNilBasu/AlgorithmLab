@@ -1,4 +1,4 @@
-# AlgorithmLab
+# 5th Sem LabWorks
 
 
-Codes written in Algorithm Lab, 5th sem
+Codes written in Algorithm, OOP and C++ Labs, 5th sem
