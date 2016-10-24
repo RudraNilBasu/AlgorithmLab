@@ -3,6 +3,7 @@
 
 #define SWAP(a,b) a=(a+b)-(b=a)
 /*
+ // swap by pointer
 int swap(int *a, int *b)
 {
 	int t=*a;
