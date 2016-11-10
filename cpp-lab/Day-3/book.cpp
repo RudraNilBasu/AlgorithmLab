@@ -55,10 +55,16 @@ class Book {
 	}
 	void display()
 	{
+		cout<<"-----------------\n";
 		cout<<"Name: "<<title<<endl;
 		cout<<"Author: "<<author<<endl;
 		cout<<"Publisher: "<<publisher<<endl;
 		cout<<"Price: "<<price<<endl;
+		cout<<"-----------------\n";
+	}
+	bool search(string _title, string _author)
+	{
+		return (title==_title) && (author==_author);
 	}
 };
 
@@ -71,11 +77,28 @@ int main()
 	//Book library[n];
 	for(i=0;i<n;i++) {
 		//scanf("%s",library[i]->author);
+		cout<<"Enter author, title, price, publisher of this book\n";
 		string author,title,publisher;
 		float price;
 		cin>>author>>title>>price>>publisher;
 		Book x(author, title, price, publisher);
 		library.push_back(x);
+	}
+	cout<<"Done\n";
+	string author,title;
+	bool flag=false;
+	cout<<"Enter author to search:";
+	cin>>author;
+	cout<<"Enter title of the book to search: ";
+	cin>>title;
+	for(i=0;i<n;i++) {
+		if( library[i].search(title, author) ) {
+			library[i].display();
+			flag=true;
+		}
+	}
+	if(!flag) {
+		cout<<"Not present\n";
 	}
 	return 0;
 }
