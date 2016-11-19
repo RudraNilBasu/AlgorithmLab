@@ -1,3 +1,7 @@
+/*
+ * Use an object with one string attribute and concatenate 
+ * it using a function
+ * */
 #include<stdio.h>
 #include<iostream>
 #include<string>
