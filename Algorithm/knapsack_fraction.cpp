@@ -21,7 +21,7 @@ void sort(int val[N], int wt[N])
 
 void fracknap(int val[N], int wt[N], int c, int n)
 {
-	// sort wt[] based on decreasing order of val[i]/wt[i]
+	// sort wt[] and val[] based on decreasing order of val[i]/wt[i]
 	sort(val, wt);
 	int i,rc;
 	// print
@@ -60,7 +60,7 @@ void fracknap(int val[N], int wt[N], int c, int n)
 	float ans=0.0;
 	for(i=0;i<N;i++) {
 		printf("%f ",x[i]);
-		//ans+=(x[i]*val[i]);
+		
 	}
 	printf("\n");
 	ans=0;
@@ -83,22 +83,18 @@ int main()
 {
 	int val[N],wt[N];
 	int i,c,n; // c=capacity, n=no of elements
-	//MSG("Enter value of n");
-	//inpd(n);
+	
 	n=N;
 	c=50;
-	//MSG("Enter value of c (the capacity)");
-	//inpd(c);
-	//MSG("Enter the values");
+	
 	for(i=0;i<N;i++) {
 		inpd(val[i]);
 	}
-	//MSG("Enter value of wts");
+	
 	for(i=0;i<n;i++) {
 		inpd(wt[i]);
 	}
-	//MSG("Enter capacity");
-	//inpd(c);
+	
 	fracknap(val, wt, c, n);
 	return 0;
 }
