@@ -1,0 +1,4 @@
+MVI A,4
+ANI 01
+STA 8005
+HLT
