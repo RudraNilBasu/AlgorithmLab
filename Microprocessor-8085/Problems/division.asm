@@ -1,0 +1,15 @@
+// By RNB and Tokon
+MVI C,00
+MVI A,0A
+MVI B,05
+SUB1:
+	CMP B
+	JC PRINT
+	SUB B
+	//DAA
+	//CMA
+	INR C
+	JMP SUB1
+PRINT:
+	MOV D,A
+HLT
