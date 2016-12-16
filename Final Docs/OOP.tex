@@ -336,6 +336,17 @@ class area2
 
 \newpage
 
+\setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
+%\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+\addtolength{\boxlength}{-4mm}
+\begin{center}\framebox{\parbox{\boxlength}{\bf
+CS504D: Object Oriented Programming \hfill 
+Date: 
+\\
+%DATE
+\hfill
+}}\end{center}
+\vspace{5mm}
 
 \section{Week 3 - }
 
@@ -462,7 +473,191 @@ class Test{
 
 \newpage
 
+\setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
+%\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+\addtolength{\boxlength}{-4mm}
+\begin{center}\framebox{\parbox{\boxlength}{\bf
+CS504D: Object Oriented Programming \hfill 
+Date: 
+\\
+%DATE
+\hfill
+}}\end{center}
+\vspace{5mm}
 
+\section{Week 4 - Command Line Arguments \& static variables}
+
+\textbf{Problem 4.2} \textit{Write a program in Java and create two sub classes "Arts" and "Science", such that all the students have unique roll no}
+
+
+\textit{Code.}
+
+\begin{lstlisting}[language=Java]
+class Student
+{
+	static int count;
+	int roll;
+	Student()
+	{
+		roll=++count;
+	}
+}
+class Science extends Student
+{
+	int phy,chem,math;
+	Science(int _phy, int _chem, int _math)
+	{
+		super();
+		phy=_phy;
+		chem=_chem;
+		math=_math;
+	}
+}
+class Art extends Student
+{
+	int hist,geo,eng;
+	Art(int _hist, int _geo, int _eng)
+	{
+		super();
+		hist=_hist;
+		geo=_geo;
+		eng=_eng;
+	}
+}
+class st
+{
+	public static void main(String args[])
+	{
+		Art a1=new Art(10,20,30);
+		Science s1=new Science(15,25,31);
+		System.out.println("Art\t\t"+a1.hist+
+		"\t"+a1.geo+"\t"+a1.eng+"\tRoll "+a1.roll);
+		System.out.println("Science\t\t"+s1.phy+"\t"+s1.chem+
+		"\t"+s1.math+"\tRoll "+s1.roll);
+	}
+}
+\end{lstlisting}
+\textit{Output.}
+
+\textbf{Problem 4.3} \textit{Write a program in Java to take two integers from the command line and print the largest and smallest among them.}
+
+
+\textit{Code.}
+
+\begin{lstlisting}
+class op
+{
+	public static void main(String args[])
+	{
+		int i;
+		int a=Integer.parseInt(args[0]);
+		int b=Integer.parseInt(args[1]);
+		System.out.println("Sum="+(a+b));
+		int max,min;
+		if(a>b) {
+			max=a;
+			min=b;
+		} else {
+			max=b;
+			min=a;
+		}
+		System.out.println("Max="+max+"\nMin="+min);
+
+	}
+}
+\end{lstlisting}
+\textit{Output.}
+
+\textbf{Problem 4.4} \textit{Write a program in Java to take command line integers from argument and sort them.}
+
+
+\textit{Code.}
+
+\begin{lstlisting}
+class sot
+{
+	public static void main(String args[])
+	{
+		int i,j;
+		int n=args.length;
+		int a[]=new int[n];
+		for(i=0;i<n;i++) {
+			a[i]=Integer.parseInt(args[i]);
+		}
+		for(i=0;i<n-1;i++) {
+			for(j=0;j<n-i-1;j++) {
+				if(a[j]>a[j+1]) {
+					a[j]=(a[j]+a[j+1])-(a[j+1]=a[j]);
+				}
+			}
+		}
+		for(i=0;i<n;i++) {
+			System.out.println(a[i]);
+		}
+	}
+}
+\end{lstlisting}
+\textit{Output.}
+
+\textbf{Problem 4.5} \textit{Write a program in Java to take command line float from argument and sort them.}
+
+
+\textit{Code.}
+
+\begin{lstlisting}
+class sortF
+{
+	public static void main(String args[])
+	{
+		int i,j;
+		int n=args.length;
+		float a[]=new float[n];
+		for(i=0;i<n;i++) {
+			a[i]=Float.parseFloat(args[i]);
+		}
+		for(i=0;i<n-1;i++) {
+			for(j=0;j<n-i-1;j++) {
+				if(a[j]>a[j+1]) {
+					a[j]=(a[j]+a[j+1])-
+					(a[j+1]=a[j]);
+				}
+			}
+		}
+		for(i=0;i<n;i++) {
+			System.out.println(a[i]);
+		}
+	}
+}
+\end{lstlisting}
+\textit{Output.}
+
+\textbf{Problem 4.6} \textit{Write a program in Java to take command line strings from argument and sort them.}
+
+
+\textit{Code.}
+
+\begin{lstlisting}
+class sortAR
+{
+	public static void main(String args[])
+	{
+		int i,j;
+		for(i=0;i<args.length-1;i++) {
+			for(j=0;j<args.length-i-1;j++) {
+				if(args[j].compareTo(args[j+1])>0) {
+					String temp=args[j+1];
+					args[j+1]=args[j];
+					args[j]=temp;
+				}
+			}
+		}
+		for(i=0;i<args.length;i++) {
+			System.out.println(args[i]);
+		}
+	}
+}
+\end{lstlisting}
+\textit{Output.}
 
 %\begin{theorem}
 %This is a theorem statement.
