@@ -5,6 +5,8 @@
 \usepackage{eepic}
 \usepackage{graphicx}
 
+\usepackage{listings}
+
 \newcommand{\proof}[1]{
 {\noindent {\it Proof.} {#1} \rule{2mm}{2mm} \vskip \belowdisplayskip}
 }
@@ -21,34 +23,106 @@
 \setlength{\textwidth}{6.5in}
 \setlength{\textheight}{8.5in}
 
+
+
 \begin{document}
 
 \setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
 \newlength{\boxlength}\setlength{\boxlength}{\textwidth}
 \addtolength{\boxlength}{-4mm}
 \begin{center}\framebox{\parbox{\boxlength}{\bf
-CS 683: Advanced Algorithms \hfill 
-TOPIC
+CS504D: Object Oriented Programming \hfill 
+Date: 
 \\
-DATE
+%DATE
 \hfill
-Scribe: NAMES
 }}\end{center}
 \vspace{5mm}
 
-\section{First Section}
+\section{Week 1}
 
-The text of the notes goes here.
-To include a theorem with proof, use the following format.
+%The text of the notes goes here.
+%To include a theorem with proof, use the following format.
 
-\begin{theorem}
-This is a theorem statement.
-\label{thm:sample-statement}
-\end{theorem}
+\textbf{Problem 1.1} \textit{Write a program in Java to find the prime numbers between 1 to 100}\\
 
-\proof{
-This is a proof.
+
+\textit{Code.}
+
+\begin{lstlisting}[language=Java]
+class prime
+{
+	static boolean primes[];
+	public static void fillFalse()
+	{
+		int i;
+		for(i=0;i<101;i++) {
+			primes[i]=true;
+		}
+	}
+	public static void initialise()
+	{
+		fillFalse();
+		int i,j;
+		primes[1]=false;
+		for(i=2;i<101;i++) {
+			if(primes[i]==true) {
+				for(j=i+i;j<101;j+=i) {
+					primes[j]=false;
+				}
+			}
+		}
+	}
+	public static void print()
+	{
+		int i;
+		for(i=1;i<=100;i++) {
+			if(primes[i]==true)
+			System.out.println(i);
+		}
+	}
+	public static void main(String ags[])
+	{
+		primes=new boolean[101];
+		initialise();
+		print();
+	}
 }
+\end{lstlisting}
+
+\textbf{Problem 1.2} \textit{Write a program in Java to reverse a given number.}\\
+
+
+\textit{Code.}
+
+\begin{lstlisting}[language=Java]
+import java.io.*;
+class reverse
+{
+	public static void main(String args[])throws IOException
+	{
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		int n;
+		n=Integer.parseInt(br.readLine());
+		int m=n,rev=0;
+		while(m>0) {
+			rev=(rev*10)+m%10;
+			m/=10;
+		}
+		System.out.println("Reversed Number "+rev);
+	}
+}
+\end{lstlisting}
+
+
+%\begin{theorem}
+%This is a theorem statement.
+%\label{thm:sample-statement}
+%\end{theorem}
+
+%\proof{
+%This is a proof.
+%}
 
 
 
