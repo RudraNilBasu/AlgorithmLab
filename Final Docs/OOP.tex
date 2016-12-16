@@ -5,7 +5,8 @@
 \usepackage{eepic}
 \usepackage{graphicx}
 
-\usepackage{listings}
+\usepackage{listings} % Code
+\usepackage{fancyhdr} % header footer
 
 \newcommand{\proof}[1]{
 {\noindent {\it Proof.} {#1} \rule{2mm}{2mm} \vskip \belowdisplayskip}
@@ -23,7 +24,7 @@
 \setlength{\textwidth}{6.5in}
 \setlength{\textheight}{8.5in}
 
-
+\cfoot{footer}
 
 \begin{document}
 
@@ -113,6 +114,119 @@ class reverse
 	}
 }
 \end{lstlisting}
+
+\textbf{Problem 1.3} \textit{Write a program in Java to find the sum of digits of a given number.}\\
+
+
+\textit{Code.}
+
+\begin{lstlisting}[language=Java]
+import java.io.*;
+class sum
+{
+	public static void main(String args[])throws IOException
+	{
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		int n;
+		n=Integer.parseInt(br.readLine());
+		int m=n,rev=0,sum=0;
+		while(m>0) {
+			sum+=(m%10);
+			m/=10;
+		}
+		System.out.println("Sum of each digits "+sum);
+	}
+}
+\end{lstlisting}
+
+\textbf{Problem 1.4} \textit{Write a program in Java to print the following pattern.}
+
+\begin{lstlisting}
+*
+**
+***
+****
+\end{lstlisting}
+
+\textit{Code.}
+
+\begin{lstlisting}[language=Java]
+class patt1
+{
+	public static void main(String args[])
+	{
+		int n=4,i,j;
+		for(i=1;i<=n;i++) {
+			for(j=1;j<=i;j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
+}
+\end{lstlisting}
+
+\textbf{Problem 1.5} \textit{Write a program in Java to print the following pattern.}
+
+\begin{lstlisting}
+   *
+  ***
+ *****
+*******
+\end{lstlisting}
+
+\textit{Code.}
+
+\begin{lstlisting}[language=Java]
+class patt2
+{
+	public static void main(String args[])
+	{
+		int n=4,i,j,k;
+		for(i=1;i<=n;i++) {
+			for(j=n-1;j>=i;j--) {
+				System.out.print(" ");
+			}
+			for(j=1;j<=((2*i)-1);j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
+}
+\end{lstlisting}
+
+
+\textbf{Problem 1.6} \textit{Write a program in Java to print the following pattern.}
+
+\begin{lstlisting}
+   *
+  **
+ ***
+****
+\end{lstlisting}
+
+\textit{Code.}
+
+\begin{lstlisting}[language=Java]
+class patt3
+{
+	public static void main(String args[])
+	{
+		int n=4,i,j;
+		for(i=1;i<=n;i++) {
+			for(j=n-1;j>=i;j--) {
+				System.out.print(" ");
+			}
+			for(j=1;j<=i;j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
+}
+\end{lstlisting}
+
 
 
 %\begin{theorem}
