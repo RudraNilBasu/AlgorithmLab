@@ -1,30 +1,49 @@
 \documentclass[12pt]{article}
 
-\usepackage{fullpage}
-\usepackage{epic}
-\usepackage{eepic}
-\usepackage{graphicx}
+%\usepackage{fullpage}
+%\usepackage{epic}
+%\usepackage{eepic}
+%\usepackage{graphicx}
 
 \usepackage{listings} % Code
 \usepackage{fancyhdr} % header footer
+\usepackage{xcolor}  % Color
+\usepackage{mathtools} % Math
 
-\newcommand{\proof}[1]{
-{\noindent {\it Proof.} {#1} \rule{2mm}{2mm} \vskip \belowdisplayskip}
-}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+%\newcommand{\proof}[1]{
+%{\noindent {\it Proof.} {#1} \rule{2mm}{2mm} \vskip \belowdisplayskip}
+%}
 
 
-\newtheorem{lemma}{Lemma}[section]
-\newtheorem{theorem}[lemma]{Theorem}
-\newtheorem{claim}[lemma]{Claim}
-\newtheorem{definition}[lemma]{Definition}
-\newtheorem{corollary}[lemma]{Corollary}
+%\newtheorem{lemma}{Lemma}[section]
+%\newtheorem{theorem}[lemma]{Theorem}
+%\newtheorem{claim}[lemma]{Claim}
+%\newtheorem{definition}[lemma]{Definition}
+%\newtheorem{corollary}[lemma]{Corollary}
 
-\setlength{\oddsidemargin}{0in}
-\setlength{\topmargin}{0in}
-\setlength{\textwidth}{6.5in}
-\setlength{\textheight}{8.5in}
+%\setlength{\oddsidemargin}{0in}
+%\setlength{\topmargin}{0in}
+%\setlength{\textwidth}{6.5in}
+%\setlength{\textheight}{8.5in}
 
 \cfoot{footer}
+
+\lstset {
+%language=Java,
+backgroundcolor = \color{lightgray},
+                   language = Java,
+                   xleftmargin = 2mm,
+                   framexleftmargin = 1em
+%lineskip={-1.5pt}
+}
 
 \begin{document}
 
@@ -49,6 +68,8 @@ Date:
 
 
 \textit{Code.}
+
+
 
 \begin{lstlisting}[language=Java]
 class prime
@@ -102,7 +123,8 @@ class reverse
 {
 	public static void main(String args[])throws IOException
 	{
-		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader br=new BufferedReader(new 
+		InputStreamReader(System.in));
 		int n;
 		n=Integer.parseInt(br.readLine());
 		int m=n,rev=0;
@@ -126,7 +148,8 @@ class sum
 {
 	public static void main(String args[])throws IOException
 	{
-		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader br=new BufferedReader(new 
+		InputStreamReader(System.in));
 		int n;
 		n=Integer.parseInt(br.readLine());
 		int m=n,rev=0,sum=0;
@@ -226,6 +249,218 @@ class patt3
 	}
 }
 \end{lstlisting}
+
+\newpage
+
+% Week 2
+
+\setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
+%\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+\addtolength{\boxlength}{-4mm}
+\begin{center}\framebox{\parbox{\boxlength}{\bf
+CS504D: Object Oriented Programming \hfill 
+Date: 
+\\
+%DATE
+\hfill
+}}\end{center}
+\vspace{5mm}
+
+\section{Week 2 - Function and Constructor Overloading}
+
+%Function and Constructor Overloading
+
+\textbf{Problem 2.1} \textit{Write a program in Java to calculate the area of different shapes using function overloading.}
+
+
+\textit{Code.}
+
+\begin{lstlisting}[language=Java]
+class area1
+{
+	void area(int sq)
+	{
+		System.out.println("Area of Square = "+sq*sq);
+	}
+	void area(int l, int w)
+	{
+		System.out.println("Area of Rectangle = "+l*w);
+	}
+	void area(float b,float ht)
+	{
+		System.out.println("Area of Triangle = "+(0.5)*(b*ht));
+	}
+	public static void main(String args[])
+	{
+		area1 a1=new area1();
+		a1.area(10);
+		a1.area(10,20);
+		a1.area(10.0f,25.0f);
+	}
+}
+\end{lstlisting}
+
+\textit{Output.}
+
+
+\textbf{Problem 2.1} \textit{Write a program in Java to calculate the area of different shapes using Constructor overloading.}
+
+
+\textit{Code.}
+
+\begin{lstlisting}[language=Java]
+class area2
+{
+	area2(int sq)
+	{
+		System.out.println("Area of Square = "+sq*sq);
+	}
+	area2(int l, int w)
+	{
+		System.out.println("Area of Rectangle = "+l*w);
+	}
+	area2(float b,float ht)
+	{
+		System.out.println("Area of Triangle = "+(0.5)*(b*ht));
+	}
+	public static void main(String args[])
+	{
+		area2 a1=new area2(5);
+		a1=new area2(12,20);
+		a1=new area2(12.5f,13.0f);
+	}
+}
+\end{lstlisting}
+
+\textit{Output.}
+
+\newpage
+
+
+\section{Week 3 - }
+
+\textbf{Problem 3.1} \textit{Write a program to design a class representing a bank account. The class should have the following data members:\\
+* a/c no. * customer id * balance amount\\
+The class should have member methods with the following functions:\\
+* initialize initial value
+* to deposit amount
+* to withdraw amount
+* to display customer id, a/c no. and current balance.}
+
+
+\textit{Code.}
+
+\begin{lstlisting}[language=Java]
+import java.util.*;
+class Bank{
+	static Scanner sc=new Scanner(System.in);
+	static long acno; static double amt;
+	static String id;
+	private void init(){
+		acno=0; amt=0.0;
+		id="";
+	}
+	private double deposit(double d){ return amt+=d; }
+	private double withdraw(double d){
+		if(d<amt&&amt!=0)return amt-=d;
+		else {
+			 System.out.println("Not Enough Balance!!");
+			  return amt;
+		}
+	}
+	private void print(){
+		System.out.println("Customer ID \t A/c No. \t"+
+		"Current Balance");
+		System.out.println(id+"\t \t "+acno+"\t \t "+amt);
+	}
+	public static void main(String[]args){
+		Bank obj=new Bank();
+		obj.init();
+		System.out.println("Enter account no and current balance:");
+		id="3000114022";
+		acno=sc.nextLong(); amt=sc.nextDouble();
+		double d=0.0;
+		int choice=0;
+		do{
+			System.out.println("Main Menu");
+			System.out.println("0. Deposit");
+			System.out.println("1. Withdrawal");
+			System.out.println("2. Print Statement");
+			System.out.println("3. Exit");
+			System.out.println("Enter choice:");
+			choice=sc.nextInt();
+			switch(choice){
+				case 0:d=0.0;
+				        System.out.println("Enter "+
+				        "amount to deposit:");
+				        d=sc.nextDouble();
+					 System.out.println("Deposit="+d+
+					 "current balance="+
+					 (double)obj.deposit(d));
+					 break;
+				case 1:d=0.0;
+				       System.out.println("Amount ?");
+				       d=sc.nextDouble();
+				       System.out.println("withdrawal="+d+
+				       "current balance="+
+				       (double)obj.withdraw(d));
+				        break;
+				case 2:obj.print();
+				       break;
+				default:
+					break;
+			}
+		}while(choice<3);
+	}
+}
+
+\end{lstlisting}
+
+\textit{Output.}
+
+
+\textbf{Problem 3.2} \textit{Write a program to add two complex numbers.\\
+Print the result in \(x+iy\)\\
+form. Use objects as arguments to a method which will perform the addition
+and use function overloading.}
+
+
+\textit{Code.}
+
+\begin{lstlisting}
+class Complex
+{
+	double x;
+	int y;
+	Complex(double a,int b){
+		x=a; y=b;
+	}
+	void print(){ System.out.println(x+"+ i"+y); }
+}
+class Test{
+	double real; int imag;
+	private double sum(double a,double b){
+		real=a+b; return real;
+	}
+	private int sum(int a,int b){
+		imag=a+b; return imag;
+	}
+	public static void main(String[]args){
+		Complex obj=new Complex(4,6);
+		obj.print();
+		Complex obj1=new Complex(1,9);
+		obj1.print();
+		Test t1=new Test();
+		System.out.println("sum =: "+t1.sum(obj.x,obj1.x)+"+"i
+		+t1.sum(obj.y,obj1.y));
+	}
+}
+
+\end{lstlisting}
+
+\textit{Output.}
+
+\newpage
 
 
 
