@@ -45,7 +45,23 @@ backgroundcolor = \color{lightgray},
 %lineskip={-1.5pt}
 }
 
+%\usepackage[utf8]{inputenc}
+ 
+ 
+% Information about contents section
+\title{Contents}
+\author{Rudra Nil Basu}
+\date{ }
+ 
+\renewcommand*\contentsname{Summary}
+
 \begin{document}
+
+% to generate the contents page
+\maketitle
+\tableofcontents
+
+\newpage
 
 \setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
 \newlength{\boxlength}\setlength{\boxlength}{\textwidth}
@@ -59,7 +75,7 @@ Date:
 }}\end{center}
 \vspace{5mm}
 
-\section{Week 1}
+\section{Week 1 - Operation with numbers and patterns}
 
 %The text of the notes goes here.
 %To include a theorem with proof, use the following format.
@@ -100,7 +116,7 @@ class prime
 		int i;
 		for(i=1;i<=100;i++) {
 			if(primes[i]==true)
-			System.out.println(i);
+			System.out.print(i+" ");
 		}
 	}
 	public static void main(String ags[])
@@ -110,6 +126,12 @@ class prime
 		print();
 	}
 }
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 
+97 
 \end{lstlisting}
 
 \textbf{Problem 1.2} \textit{Write a program in Java to reverse a given number.}\\
@@ -137,6 +159,12 @@ class reverse
 }
 \end{lstlisting}
 
+\textit{Output.}
+\begin{lstlisting}
+12345
+Reversed Number 54321
+\end{lstlisting}
+
 \textbf{Problem 1.3} \textit{Write a program in Java to find the sum of digits of a given number.}\\
 
 
@@ -160,6 +188,12 @@ class sum
 		System.out.println("Sum of each digits "+sum);
 	}
 }
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+12345
+Sum of each digits 15
 \end{lstlisting}
 
 \textbf{Problem 1.4} \textit{Write a program in Java to print the following pattern.}
@@ -187,6 +221,14 @@ class patt1
 		}
 	}
 }
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+*
+**
+***
+****
 \end{lstlisting}
 
 \textbf{Problem 1.5} \textit{Write a program in Java to print the following pattern.}
@@ -219,6 +261,13 @@ class patt2
 }
 \end{lstlisting}
 
+\textit{Output.}
+\begin{lstlisting}
+   *
+  ***
+ *****
+*******
+\end{lstlisting}
 
 \textbf{Problem 1.6} \textit{Write a program in Java to print the following pattern.}
 
@@ -248,6 +297,14 @@ class patt3
 		}
 	}
 }
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+   *
+  **
+ ***
+****
 \end{lstlisting}
 
 \newpage
@@ -301,6 +358,12 @@ class area1
 \end{lstlisting}
 
 \textit{Output.}
+\begin{lstlisting}
+Area of Square = 100
+Area of Rectangle = 200
+Area of Triangle = 125.0
+\end{lstlisting}
+
 
 
 \textbf{Problem 2.1} \textit{Write a program in Java to calculate the area of different shapes using Constructor overloading.}
@@ -333,6 +396,11 @@ class area2
 \end{lstlisting}
 
 \textit{Output.}
+\begin{lstlisting}
+Area of Square = 25
+Area of Rectangle = 240
+Area of Triangle = 81.25
+\end{lstlisting}
 
 \newpage
 
@@ -348,7 +416,7 @@ Date:
 }}\end{center}
 \vspace{5mm}
 
-\section{Week 3 - }
+\section{Week 3 - Objects}
 
 \textbf{Problem 3.1} \textit{Write a program to design a class representing a bank account. The class should have the following data members:\\
 * a/c no. * customer id * balance amount\\
@@ -428,7 +496,41 @@ class Bank{
 \end{lstlisting}
 
 \textit{Output.}
-
+\begin{lstlisting}
+Enter account no and current balance:
+1200
+10000
+Main Menu
+0. Deposit
+1. Withdrawal
+2. Print Statement
+3. Exit
+Enter choice
+0
+Enter amount to deposit
+2000
+Deposit=2000.0 current balance=12000.0
+Main Menu
+0. Deposit
+1. Withdrawal
+2. Print Statement
+3. Exit
+Enter choice
+1
+Amount ?
+3000
+withdrawal = 3000.0 current balance=9000.0
+Main Menu
+0. Deposit
+1. Withdrawal
+2. Print Statement
+3. Exit
+Enter choice
+1
+Amount?
+15000
+Not Enough Balance!!
+\end{lstlisting}
 
 \textbf{Problem 3.2} \textit{Write a program to add two complex numbers.\\
 Print the result in \(x+iy\)\\
@@ -462,7 +564,7 @@ class Test{
 		Complex obj1=new Complex(1,9);
 		obj1.print();
 		Test t1=new Test();
-		System.out.println("sum =: "+t1.sum(obj.x,obj1.x)+"+"i
+		System.out.println("sum =: "+t1.sum(obj.x,obj1.x)+"+i"
 		+t1.sum(obj.y,obj1.y));
 	}
 }
@@ -470,6 +572,12 @@ class Test{
 \end{lstlisting}
 
 \textit{Output.}
+
+\begin{lstlisting}
+4.0+ i6
+1.0+ i9
+sum =: 5.0+i15
+\end{lstlisting}
 
 \newpage
 
@@ -486,6 +594,16 @@ Date:
 \vspace{5mm}
 
 \section{Week 4 - Command Line Arguments \& static variables}
+
+\textbf{Problem 4.2} \textit{Write a program in Java and create a Student classes such that all the students have unique roll no}
+
+\textit{Code.}
+\begin{lstlisting}
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+\end{lstlisting}
 
 \textbf{Problem 4.2} \textit{Write a program in Java and create two sub classes "Arts" and "Science", such that all the students have unique roll no}
 
@@ -539,6 +657,11 @@ class st
 \end{lstlisting}
 \textit{Output.}
 
+\begin{lstlisting}
+Art		10	20	30	Roll 1
+Science		15	25	31	Roll 2
+\end{lstlisting}
+
 \textbf{Problem 4.3} \textit{Write a program in Java to take two integers from the command line and print the largest and smallest among them.}
 
 
@@ -567,6 +690,11 @@ class op
 }
 \end{lstlisting}
 \textit{Output.}
+
+\begin{lstlisting}
+Max=5
+Min=-1
+\end{lstlisting}
 
 \textbf{Problem 4.4} \textit{Write a program in Java to take command line integers from argument and sort them.}
 
@@ -598,6 +726,13 @@ class sot
 }
 \end{lstlisting}
 \textit{Output.}
+
+\begin{lstlisting}
+1
+3
+5
+7
+\end{lstlisting}
 
 \textbf{Problem 4.5} \textit{Write a program in Java to take command line float from argument and sort them.}
 
@@ -631,6 +766,14 @@ class sortF
 \end{lstlisting}
 \textit{Output.}
 
+\begin{lstlisting}
+1.5
+2.1
+2.5
+3.4
+5.0
+\end{lstlisting}
+
 \textbf{Problem 4.6} \textit{Write a program in Java to take command line strings from argument and sort them.}
 
 
@@ -659,6 +802,12 @@ class sortAR
 \end{lstlisting}
 \textit{Output.}
 
+\begin{lstlisting}
+Debayan
+Rohit
+Rudra
+\end{lstlisting}
+
 \newpage
 
 \setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
@@ -673,7 +822,7 @@ Date:
 }}\end{center}
 \vspace{5mm}
 
-\section{Week 5 - }
+\section{Week 5 - Sorting of Objects}
 
 \textbf{Problem 5.1} \textit{Write a program in Java to create a Student class and arrange the objects according to their percentage}
 
@@ -865,7 +1014,7 @@ Debayan	70	95	90Perc = 85.0
 \addtolength{\boxlength}{-4mm}
 \begin{center}\framebox{\parbox{\boxlength}{\bf
 CS504D: Object Oriented Programming \hfill 
-Date: 
+Date: 22/11/2016
 \\
 %DATE
 \hfill
@@ -1148,6 +1297,282 @@ Element in 1th index in descending order 4
 Element in 2th index in descending order 3
 Element in 3th index in descending order 2
 Element in 4th index in descending order 1
+\end{lstlisting}
+
+\textbf{Problem 6.4} \textit{Write a program in Java using vectors to do the following program. Create objects of 2 classes "Arts" and "Science". Depending on the argument, retrieve the objects, sort the objects according to their marks and display them using Threads.}
+
+\textit{Code.}
+
+\begin{lstlisting}
+import java.util.*;
+class Art
+{
+	int marks;
+	Art(int m)
+	{
+		marks=m;
+	}
+	public int getMarks()
+	{
+		return marks;
+	}
+	public String type()
+	{
+		return "Art";
+	}
+}
+class Science
+{
+	int marks;
+	Science(int m)
+	{
+		marks=m;
+	}
+	public int getMarks()
+	{
+		return marks;
+	}
+	public String type()
+	{
+		return "Science";
+	}
+}
+
+class A extends Thread
+{
+	Vector v;
+	A(Vector a)
+	{
+		v=new Vector();
+		int i;
+		for(i=0;i<a.size();i++) {
+			if(a.elementAt(i) instanceof Art) {
+				v.addElement((Art)a.elementAt(i));
+			}
+		}
+	}
+	public void run()
+	{
+		int i;
+		for(i=0;i<v.size();i++) {
+			Art a=(Art)v.elementAt(i);
+			System.out.println("Art marks="+a.getMarks());
+		}
+	}
+}
+
+class S extends Thread
+{
+	Vector v;
+	S(Vector a)
+	{
+		v=new Vector();
+		int i;
+		for(i=0;i<a.size();i++) {
+			/*
+			if(a.elementAt(i).type().equals("Science")) {
+				v.addElement(a.elementAt(i));
+			}
+			*/
+			if(a.elementAt(i) instanceof Science) {
+				v.addElement((Science)a.elementAt(i));
+			}
+		}
+	}
+	public void run()
+	{
+		int i;
+		for(i=0;i<v.size();i++) {
+			Science a=(Science)v.elementAt(i);
+			System.out.println("Science marks="+
+			a.getMarks());
+		}
+	}
+}
+
+class student 
+{
+	public static void main(String args[])
+	{
+		Vector v=new Vector();
+		int n=10;
+		Art a=new Art(25);
+		v.addElement(a);
+		Art b=new Art(20);
+		v.addElement(b);
+		Science s1=new Science(10);
+		Science s2=new Science(90);
+		v.addElement(s1);
+		v.addElement(s2);
+		if(args[0].equals("Art")) {
+			A threadA=new A(v);
+			threadA.start();
+		} else {
+			S threadS=new S(v);
+			threadS.start();
+		}
+	}
+}
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+Enter the name of 1Student Rudra
+Enter the Roll of 1Student 23
+Enter the marks1 of 1Student 90
+Enter the marks2 of 1Student 45
+Enter the marks3 of 1Student 80
+Enter the name of 2Student Rohit
+Enter the Roll of 2Student 22
+Enter the marks1 of 2Student 85
+Enter the marks2 of 2Student 95
+Enter the marks3 of 2Student 80
+Enter the name of 3Student Debayan
+Enter the Roll of 3Student 10
+Enter the marks1 of 3Student 70
+Enter the marks2 of 3Student 95
+Enter the marks3 of 3Student 90
+-----------------
+Rudra	90	45	80Perc = 71.666664
+Rohit	85	95	80Perc = 86.666664
+Debayan	70	95	90Perc = 85.0
+-----------------
+\end{lstlisting}
+
+\newpage
+
+\setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
+%\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+\addtolength{\boxlength}{-4mm}
+\begin{center}\framebox{\parbox{\boxlength}{\bf
+CS504D: Object Oriented Programming \hfill 
+Date: 29/11/2016
+\\
+%DATE
+\hfill
+}}\end{center}
+\vspace{5mm}
+
+\section{Week 7 - Producer Consumer Problem}
+
+\textbf{Problem 7.1} \textit{Write a program in Java to implement the Producer consumer problem}
+
+\textit{Code.}
+
+\begin{lstlisting}
+class Q
+{
+	int n;
+	int size=2;
+	int items=0;
+	boolean valueSet=false;
+	synchronized int get()
+	{
+		while(!valueSet) {
+			try {
+				wait();
+			} catch(InterruptedException e) {
+				System.out.println("Interrupt! ");
+			}
+		}
+		System.out.println("Got: "+n);
+		valueSet=false;
+		notify();
+		return n;
+	}
+	synchronized void put(int n)
+	{
+		while(valueSet) {
+			try {
+				System.out.println(n+
+				" is Waiting to be put.");
+				wait();
+			} catch(InterruptedException e) {
+				System.out.println("Interrupt! ");
+			}
+		}
+		this.n=n;
+		valueSet=true;
+		System.out.println("Put: "+n);
+		notify();
+	}
+}
+class Producer implements Runnable
+{
+	Q q;
+	Producer(Q q)
+	{
+		this.q=q;
+		new Thread(this, "Producer").start();
+	}
+	public void run()
+	{
+		int i=0;
+		while(i<10) {
+			q.put(i++);
+		}
+	}
+}
+class Consumer implements Runnable
+{
+	Q q;
+	Consumer(Q q)
+	{
+		this.q=q;
+		new Thread(this, "Consumer").start();
+	}
+	public void run()
+	{
+		while(true) {
+			q.get();
+		}
+	}
+}
+class PC
+{
+	public static void main(String args[])
+	{
+		System.out.println("Control-C to Stop.");
+		Q q=new Q();
+		new Producer(q);
+		new Consumer(q);
+	}
+}
+\end{lstlisting}
+
+\textit{Output.}
+
+\begin{lstlisting}
+Control-C to Stop.
+Put: 0
+1 is Waiting to be put.
+Got: 0
+Put: 1
+2 is Waiting to be put.
+Got: 1
+Put: 2
+3 is Waiting to be put.
+Got: 2
+Put: 3
+4 is Waiting to be put.
+Got: 3
+Put: 4
+5 is Waiting to be put.
+Got: 4
+Put: 5
+6 is Waiting to be put.
+Got: 5
+Put: 6
+7 is Waiting to be put.
+Got: 6
+Put: 7
+8 is Waiting to be put.
+Got: 7
+Put: 8
+9 is Waiting to be put.
+Got: 8
+Put: 9
+Got: 9
 \end{lstlisting}
 
 %\begin{theorem}
