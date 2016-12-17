@@ -1,0 +1,473 @@
+\documentclass[12pt]{article}
+
+%\usepackage{fullpage}
+%\usepackage{epic}
+%\usepackage{eepic}
+%\usepackage{graphicx}
+
+\usepackage{listings} % Code
+\usepackage{fancyhdr} % header footer
+\usepackage{xcolor}  % Color
+\usepackage{mathtools} % Math
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+%\newcommand{\proof}[1]{
+%{\noindent {\it Proof.} {#1} \rule{2mm}{2mm} \vskip \belowdisplayskip}
+%}
+
+
+%\newtheorem{lemma}{Lemma}[section]
+%\newtheorem{theorem}[lemma]{Theorem}
+%\newtheorem{claim}[lemma]{Claim}
+%\newtheorem{definition}[lemma]{Definition}
+%\newtheorem{corollary}[lemma]{Corollary}
+
+%\setlength{\oddsidemargin}{0in}
+%\setlength{\topmargin}{0in}
+%\setlength{\textwidth}{6.5in}
+%\setlength{\textheight}{8.5in}
+
+\cfoot{footer}
+
+\lstset {
+%language=Java,
+backgroundcolor = \color{lightgray},
+                   language = C++,
+                   xleftmargin = 2mm,
+                   framexleftmargin = 1em
+%lineskip={-1.5pt}
+}
+
+%\usepackage[utf8]{inputenc}
+ 
+ 
+% Information about contents section
+\title{Contents}
+\author{Rudra Nil Basu}
+\date{ }
+ 
+\renewcommand*\contentsname{Summary}
+
+\begin{document}
+
+% to generate the contents page
+\maketitle
+\tableofcontents
+
+\newpage
+
+\setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
+\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+\addtolength{\boxlength}{-4mm}
+\begin{center}\framebox{\parbox{\boxlength}{\bf
+CS593: Programming Practices using C++ \hfill 
+Year: 2016
+%Date: 11/10/2016
+\\
+%DATE
+\hfill
+}}\end{center}
+\vspace{5mm}
+
+\section{Pattern}
+
+\textbf{Problem 1.1} \textit{Write a program to print the following pattern using \textbf{for} loop}\\
+
+\begin{lstlisting}
+1
+22
+333
+4444
+55555
+...
+\end{lstlisting}
+
+\textit{Code.}
+
+\begin{lstlisting}
+#include<stdio.h>
+using namespace std;
+
+int main()
+{
+	int n,i,j;
+	scanf("%d",&n);
+	for(i=1;i<=n;i++) {
+		for(j=1;j<=i;j++) {
+			printf("%d",i);
+		}
+		printf("\n");
+	}
+}
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+5
+1
+22
+333
+4444
+55555
+\end{lstlisting}
+
+\section{Average of Cricket Players}
+
+\textbf{Problem 1.2} \textit{A cricket team has the following table of batting figures for a series of test matches
+\setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
+%\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+\addtolength{\boxlength}{-4mm}
+\begin{center}\framebox{\parbox{\boxlength}{\bf
+Player's Name \hfill Runs \hfill Innings \hfill Times not out\\
+Sachin \hfill 8430 \hfill 230 \hfill 180\\
+Saurav \hfill 4200 \hfill 130 \hfill 9\\
+Rahul \hfill 3350 \hfill 105 \hfill 11
+}}\end{center}
+\vspace{5mm}
+% End of box
+Write a program to read figures from the above form, to calculate the batting average and print out the complete table including the average
+}
+%\\
+
+
+\textit{Code.}
+
+\begin{lstlisting}
+#include<stdio.h>
+#include<vector>
+#include<iostream>
+using namespace std;
+
+typedef struct stats {
+	char name[50];
+	int runs;
+	int innings;
+	int not_out;
+	float average;
+}stats;
+
+int main()
+{
+	int i,n;
+	char strtr[10];
+	
+	int ans;
+	while(1) {
+		stats players;
+		printf("Enter name:");
+		scanf("%s",players.name);
+		printf("Enter runs, innings, not_out for %s\n",
+		players.name);
+		scanf("%d %d %d",&players.runs,&players.innings,
+		&players.not_out);
+		players.average=players.runs*1.0/players.innings;
+		g.push_back(players);
+		printf("Want more ?(1/0)\nyes=1\tno=0\n");
+		scanf("%d",&ans);
+		if(ans==0) {
+			break;
+		}
+	}
+	printf("Name\tRuns\tInnings\tNot Out\tAverage\n");
+	for(i=0;i<g.size();i++) {
+		printf("%s\t%d\t%d\t%d\t%f\n",g[i].name,
+		g[i].runs,g[i].innings
+				,g[i].not_out, g[i].average);
+	}
+	return 0;
+}
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+Enter name:Rahul
+Enter runs, innings, not_out for Rahul
+3350 105 11
+Want more ?(1/0)
+yes=1   no=0
+1
+Enter name:Sachin
+Enter runs, innings, not_out for Sachin
+8430
+230 18
+Want more ?(1/0)
+yes=1   no=0
+1
+Enter name:Saurav
+Enter runs, innings, not_out for Saurav
+4200 130 9
+Want more ?(1/0)
+yes=1   no=0
+1
+Enter name:ThePhenomenalRNB
+Enter runs, innings, not_out for ThePhenomenalRNB
+8888 105 18
+Want more ?(1/0)
+yes=1   no=0
+0
+Name    Runs    Innings Not Out Average
+Rahul   3350    105     11      31.904762
+Sachin  8430    230     18      36.652172
+Saurav  4200    130     9       32.307693
+ThePhenomenalRNB        8888    105     18      84.647621
+\end{lstlisting}
+
+\section{Electricity}
+
+\textbf{Problem 1.3} \textit{Calculate electric charge for the following rates\\
+For first 100 units \hfill 60P per unit\\
+For next 200 units \hfill 80P per unit\\
+Beyond 300 units \hfill 90P per unit\\
+Minimum charge is Rs. 50.00. If total amount is more than 300.00, additional 15\% charge is added.\\
+Read names of users and units consumed and print the charge with names
+}\\
+
+\begin{lstlisting}
+1
+22
+333
+4444
+55555
+...
+\end{lstlisting}
+
+\textit{Code.}
+
+\begin{lstlisting}
+#include<stdio.h>
+using namespace std;
+
+typedef struct charge {
+	char name[50];
+	int units;
+	float cost;
+}charge;
+
+float findCost(int n)
+{
+	float c=0;
+	if(n>=100) {
+		c+=(100*0.6);
+		n-=100;
+	} else {
+		c+=(n*0.6);
+		return c;
+	}
+	if(n>=200) {
+		c+=(200*0.8);
+		n-=200;
+	} else {
+		c+=(n*0.8);
+		return c;
+	}
+	if(n>0) {
+		c+=(n*0.9);
+		return c;
+	}
+}
+
+int main()
+{
+	int n,i;
+	scanf("%d",&n);
+	charge chs[n];
+	for(i=0;i<n;i++) {
+		printf("Enter name:");
+		scanf("%s",chs[i].name);
+		printf("Enter no of units for %s\n",chs[i].name);
+		scanf("%d",&chs[i].units);
+		chs[i].cost=500.0;
+		chs[i].cost+=findCost(chs[i].units);
+		if(chs[i].cost>300) {
+			chs[i].cost+=(0.15*chs[i].cost);
+		}
+	}
+	for(i=0;i<n;i++) {
+		printf("%s\t%d\t%f\n",chs[i].name,
+		chs[i].units,chs[i].cost);
+	}
+	return 0;
+}
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+3
+Enter name:Rudra
+Enter no of units for Rudra
+250
+Enter name:Tokon
+Enter no of units for Tokon
+10
+Enter name:Rohit
+Enter no of units for Rohit
+300
+Rudra   250     782.000000
+Tokon   10      581.900024
+Rohit   300     828.000000
+\end{lstlisting}
+
+
+\section{Election}
+
+\textbf{Problem 1.4} \textit{An election is contested by five candidates, numbered 1-5.  Voting is done on ballot paper. Write a program to read the ballots and count the votes for each candidates. Any vote outside the range 1-5 is "split vote". Count the split votes as well
+}\\
+
+\textit{Code.}
+
+\begin{lstlisting}
+#include<stdio.h>
+#include<string.h>
+#include<algorithm>
+#include<vector>
+#include<queue>
+#include<map>
+#include<math.h>
+
+#define ll long long int
+
+int max(int a, int b)
+{
+	if(a>=b)
+		return a;
+	return b;
+}
+
+using namespace std;
+
+int main()
+{
+	int n,i,count=0;
+	int hash[7];
+	memset(hash,0,sizeof(hash));
+	scanf("%d",&n);
+	while(n--) {
+		count++;
+		printf("Whom did %d vote for ? \n",count);
+		int vote;
+		scanf("%d",&vote);
+		if(vote>=1 && vote<=5) {
+			hash[vote]++;
+		} else {
+			hash[6]++;
+		}
+	}
+	for(i=1;i<=5;i++) {
+		printf("No of people voted for %d = %d\n",i,hash[i]);
+	}
+	printf("No of invalid votes = %d\n",hash[6]);
+	return 0;
+}
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+8
+Whom did 1 vote for ? 
+1
+Whom did 2 vote for ? 
+1
+Whom did 3 vote for ? 
+2
+Whom did 4 vote for ? 
+1
+Whom did 5 vote for ? 
+5
+Whom did 6 vote for ? 
+9
+Whom did 7 vote for ? 
+2
+Whom did 8 vote for ? 
+1
+No of people voted for 1 = 4
+No of people voted for 2 = 2
+No of people voted for 3 = 0
+No of people voted for 4 = 0
+No of people voted for 5 = 1
+No of invalid votes = 1
+\end{lstlisting}
+
+\section{Factorial}
+
+\textbf{Problem 3.1} \textit{Calculate factorial of a number in C++ using functions}
+
+\textit{Code.}
+
+\begin{lstlisting}
+#include<iostream>
+
+using namespace std;
+
+int fact(int n)
+{
+	if(n==1)
+		return 1;
+	return n*fact(n-1);
+}
+
+int main()
+{
+	int n;
+	cout<<"Enter number"<<endl;
+	cin>>n;
+	cout<<"Factorial of "<<n<<": "<<fact(n)<<endl;
+        return 0;
+}
+
+\end{lstlisting}
+
+\textit{Output.}
+
+\begin{lstlisting}
+Enter number
+5
+Factorial of 5: 120
+\end{lstlisting}
+
+\section{Series sum}
+
+\textbf{Problem 3.2} \textit{Calculate the sum of the series 1+22+32+42+... nth term in C++ using functions}
+
+\textit{Code.}
+
+\begin{lstlisting}
+#include<iostream>
+
+using namespace std;
+
+int fact(int n)
+{
+	if(n==1)
+		return 1;
+	return n*fact(n-1);
+}
+
+int main()
+{
+	int n;
+	cout<<"Enter number"<<endl;
+	cin>>n;
+	cout<<"Factorial of "<<n<<": "<<fact(n)<<endl;
+        return 0;
+}
+
+\end{lstlisting}
+
+\textit{Output.}
+
+\begin{lstlisting}
+Enter number
+5
+Factorial of 5: 120
+\end{lstlisting}
+
+
+\end{document}
+\grid
