@@ -68,7 +68,7 @@ backgroundcolor = \color{lightgray},
 \addtolength{\boxlength}{-4mm}
 \begin{center}\framebox{\parbox{\boxlength}{\bf
 CS504D: Object Oriented Programming \hfill 
-Date: 
+Date: 11/10/2016
 \\
 %DATE
 \hfill
@@ -316,7 +316,7 @@ class patt3
 \addtolength{\boxlength}{-4mm}
 \begin{center}\framebox{\parbox{\boxlength}{\bf
 CS504D: Object Oriented Programming \hfill 
-Date: 
+Date: 18/10/2016
 \\
 %DATE
 \hfill
@@ -409,7 +409,7 @@ Area of Triangle = 81.25
 \addtolength{\boxlength}{-4mm}
 \begin{center}\framebox{\parbox{\boxlength}{\bf
 CS504D: Object Oriented Programming \hfill 
-Date: 
+Date: 1/11/2016
 \\
 %DATE
 \hfill
@@ -586,7 +586,7 @@ sum =: 5.0+i15
 \addtolength{\boxlength}{-4mm}
 \begin{center}\framebox{\parbox{\boxlength}{\bf
 CS504D: Object Oriented Programming \hfill 
-Date: 
+Date: 8/11/2016
 \\
 %DATE
 \hfill
@@ -599,10 +599,38 @@ Date:
 
 \textit{Code.}
 \begin{lstlisting}
+class Student
+{
+	static int count;
+	int roll;
+	Student()
+	{
+		roll=++count;
+	}
+	int showRoll()
+	{
+	    return roll;
+	}
+}
+class st
+{
+	public static void main(String args[])
+	{
+		Student a=new Student();
+		Student b=new Student();
+		Student c=new Student();
+		System.out.println("Roll of Student A = "+a.showRoll());
+		System.out.println("Roll of Student B = "+b.showRoll());
+		System.out.println("Roll of Student C = "+c.showRoll());
+	}
+}
 \end{lstlisting}
 
 \textit{Output.}
 \begin{lstlisting}
+Roll of Student A = 1
+Roll of Student B = 2
+Roll of Student C = 3
 \end{lstlisting}
 
 \textbf{Problem 4.2} \textit{Write a program in Java and create two sub classes "Arts" and "Science", such that all the students have unique roll no}
@@ -815,7 +843,7 @@ Rudra
 \addtolength{\boxlength}{-4mm}
 \begin{center}\framebox{\parbox{\boxlength}{\bf
 CS504D: Object Oriented Programming \hfill 
-Date: 
+Date: 15/11/2016
 \\
 %DATE
 \hfill
@@ -1574,6 +1602,117 @@ Got: 8
 Put: 9
 Got: 9
 \end{lstlisting}
+
+\newpage
+
+\setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
+%\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+\addtolength{\boxlength}{-4mm}
+\begin{center}\framebox{\parbox{\boxlength}{\bf
+CS504D: Object Oriented Programming \hfill 
+Date: 6/12/2016
+\\
+%DATE
+\hfill
+}}\end{center}
+\vspace{5mm}
+
+\section{Week 8 - Applets}
+
+\textbf{Problem 8.1} \textit{Write a program to set foreground, background and use drawString() in an applet using Applet class.}
+
+\textit{Code.}
+
+\begin{lstlisting}
+import java.io.*;
+import java.util.*;
+import java.awt.*;
+import java.applet.*;
+
+class app extends Applet{
+ String msg;
+//set foreground and background colors
+public void init(){
+ setBackground(Color.cyan);
+ setForeground(Color.red);
+ msg="Inside init() ==\n";
+}
+//Initialize string to be displayed
+public void start(){
+ msg+="Inside start() ==\n";
+
+}
+//Display msg in applet window
+public void paint(Graphics g){
+ msg+=" Inside paint().\n";
+ g.drawString(msg,30,30);
+}
+}
+\end{lstlisting}
+
+\textit{Output.}
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{img_applet_1.jpg}
+  \label{fig:boat1}
+\end{figure}
+
+
+\textbf{Problem 8.2} \textit{ Write a program to draw various shapes in an applet using Applet class.}
+
+\textit{Code.}
+
+\begin{lstlisting}
+import java.awt.*;
+import java.applet.*;
+public class a extends Applet
+{
+	String msg="";
+	int posx=25;
+	int posy=25;
+	public void init()
+	{
+		setForeground(Color.red);
+		setBackground(Color.cyan);
+		msg+="Inside init() ===== ";
+	}
+	public void start()
+	{
+		msg+="Inside start()  ====== ";
+	}
+	public void paint(Graphics g)
+	{
+		msg+="Inside paint.";
+		g.drawString(msg, posx, posy);
+		setForeground(Color.red);
+		int x[]={10,20,10};
+		int y[]={10,20,30};
+		g.drawPolygon(x, y, 3);
+		int x1[]={60,100,60,100};
+		int y1[]={60,60,100,100};
+		g.fillPolygon(x1,y1,4);
+		g.drawOval(150,150,50,100);
+		g.fillOval(200,200,50,50);
+		int x2[]={100,200};
+		int y2[]={100,100};
+		g.drawPolygon(x2,y2,2);
+		g.drawRect(200,100,60,60);
+		g.fillRect(80,100,60,60);
+	}
+	public void stop()
+	{}
+	public void destroy()
+	{}
+}
+\end{lstlisting}
+
+\textit{Output.}
+
+\begin{figure}[h!]
+  \includegraphics[width=148mm]{img_applet_2.jpg}
+  \label{fig:boat1}
+\end{figure}
+
 
 %\begin{theorem}
 %This is a theorem statement.
