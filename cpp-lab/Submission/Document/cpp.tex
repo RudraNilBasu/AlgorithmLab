@@ -49,16 +49,16 @@ backgroundcolor = \color{lightgray},
  
  
 % Information about contents section
-\title{Contents}
-\author{Rudra Nil Basu}
+%\title{Contents}
+%\author{Rudra Nil Basu}
 \date{ }
  
-\renewcommand*\contentsname{Summary}
+%\renewcommand*\contentsname{Summary}
 
 \begin{document}
 
 % to generate the contents page
-\maketitle
+%\maketitle
 \tableofcontents
 
 \newpage
@@ -952,6 +952,1154 @@ int main()
 \begin{lstlisting}
 Rudra
 RudraNilBasu
+\end{lstlisting}
+
+\section{Operator Overloading on a user defined Float Class}
+
+\textbf{Problem 4.1} \textit{Create a class \textbf{Float} that contains one float member. Overload all four arithmatic operators so that they work on the objects of \textbf{Float}}
+
+\textit{Code.}
+\begin{lstlisting}
+class Float {
+	float x;
+	public:
+	Float() {}
+	Float(float _x) {
+		x=_x;
+	}
+	float getF() {
+		return x;
+	}
+	Float operator+(Float b) {
+		Float y;
+		y.x= x+b.x;
+		return y;
+	}
+	Float operator-(Float b) {
+		Float y;
+		y.x= x-b.x;
+		return y;
+	}
+	Float operator*(Float b) {
+		Float y;
+		y.x= x*b.x;
+		return y;
+	}
+	Float operator/(Float b) {
+		Float y;
+		if(b.x==0.0f) {
+			printf("LOL\n");
+			return y;
+		}
+		y.x= x/b.x;
+		return y;
+	}
+};
+
+int main()
+{
+	Float a(20.0f),b(15.5f);
+	Float c=a+b;
+	printf("a+b=%f\n",c.getF());
+	c=a-b;
+	printf("a-b=%f\n",c.getF());
+	c=a*b;
+	printf("a*b=%f\n",c.getF());
+	c=a/b;
+	printf("a/b=%f\n",c.getF());
+	return 0;
+}
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+a+b=35.500000
+a-b=4.500000
+a*b=310.000000
+a/b=1.290323
+\end{lstlisting}
+
+\section{Operator Overloading on a Matrix}
+
+\textbf{Problem 4.2} \textit{Create a class MAT of size \textbf{m x n}. Define all possible matrix operations for MAT type of objects}
+
+\textit{Code.}
+\begin{lstlisting}
+#include<stdio.h>
+
+class Mat {
+	int m,n;
+	int a[100][100];
+	public:
+	Mat() {}
+	Mat(int _m, int _n) {
+		m=_m;
+		n=_n;
+	}
+	int getM()
+	{
+		return m;
+	}
+	int getN()
+	{
+		return n;
+	}
+	void inp() {
+		int i,j;
+		for(i=0;i<m;i++) {
+			for(j=0;j<n;j++) {
+				printf("Enter %d,%d element\n",i+1,j+1);
+				scanf("%d",&a[i][j]);
+			}
+		}
+	}
+	void init() {
+		int i,j;
+		for(i=0;i<m;i++) {
+			for(j=0;j<n;j++) {
+				a[i][j]=0;
+			}
+		}
+	}
+	void getF() {
+		printf("The matrix (%d,%d):\n",m,n);
+		int i,j;
+		for(i=0;i<m;i++) {
+			for(j=0;j<n;j++) {
+				printf("%d ",a[i][j]);
+			}
+			printf("\n");
+		}
+	}
+	Mat operator+(Mat b) {
+		Mat y(3,3);
+		int i,j;
+		for(i=0;i<m;i++) {
+			for(j=0;j<n;j++) {
+				y.a[i][j]=a[i][j]+b.a[i][j];
+			}
+		}
+		return y;
+	}
+	Mat operator-(Mat b) {
+		Mat y(3,3);
+		int i,j;
+		for(i=0;i<m;i++) {
+			for(j=0;j<n;j++) {
+				y.a[i][j]=a[i][j]-b.a[i][j];
+			}
+		}
+		return y;
+	}
+	Mat operator*(Mat b) {
+		Mat y(3,3);
+		if(getN()!=b.getM()) {
+			printf("LOL\n");
+			return y;
+		}
+		int i,j,k,sum=0;
+		for(i=0;i<m;i++) {
+			for(j=0;j<n;j++) {
+				sum=0;
+				for(k=0;k<b.getN();k++) {
+					sum+=a[i][j]*b.a[j][k];
+				}
+				y.a[i][j]=sum;
+				sum=0;
+			}
+		}
+		return y;
+	}
+};
+
+int main()
+{
+	Mat a(3,3),b(3,3);
+	a.inp();
+	b.inp();
+	a.getF();
+	b.getF();
+	Mat c(3,3);
+	c.init();
+	c=a+b;
+	printf("a+b=\n");
+	c.getF();
+	c=a-b;
+	printf("a-b=\n");
+	c.getF();
+	c=a*b;
+	printf("a*b=\n");
+	c.getF();
+	return 0;
+}
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+The matrix (3,3):
+1 2 3 
+4 5 6 
+7 8 9 
+The matrix (3,3):
+10 11 12 
+13 14 15 
+16 17 18 
+a+b=
+The matrix (3,3):
+11 13 15 
+17 19 21 
+23 25 27 
+a-b=
+The matrix (3,3):
+-9 -9 -9 
+-9 -9 -9 
+-9 -9 -9 
+a*b=
+The matrix (3,3):
+33 84 153 
+132 210 306 
+231 336 459
+\end{lstlisting}
+
+
+
+
+\section{Equals operation on String}
+
+\textbf{Problem 4.3} \textit{Define a String class. Overload == operator to compare two strings}
+
+\textit{Code.}
+\begin{lstlisting}
+#include<string>
+#include<iostream>
+
+using namespace std;
+
+class String {
+	string s;
+	public:
+	String() {
+		s="";
+	}
+	String(string _s)
+	{
+		s=_s;
+	}
+	bool operator==(String b)
+	{
+		if(s==b.s) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+};
+
+int main()
+{
+	String a("rudra"), b("rudra"), c("rohit");
+	if(a==b) {
+		cout<<"Equal\n";
+	} else {
+		cout<<"NOT Equal";
+	}
+	if(a==c) {
+		cout<<"Equal\n";
+	} else {
+		cout<<"NOT Equal";
+	}
+}
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+Equal
+NOT Equal
+\end{lstlisting}
+
+
+\section{Inheritance - Savings and Current Bank Accounts}
+
+\textbf{Problem 5.1} \textit{Write a program to create a class account that stores customer
+name, account number and type of account. Create two more classes
+for current a/c and savings a/c. The current a/c will have:\\
+∗cheque facility,\\
+∗ minimum balance and deduction for balance below that,\\
+∗deposit and withdrawal. The saving a/c will have similar member
+methods, except for cheque and minimum balance, it will have an
+interest calculation. Do not use constructors.}
+
+\textit{Code.}
+\begin{lstlisting}
+#include<stdio.h>
+#include<iostream>
+using namespace std;
+
+class account
+{
+	string cust_name;
+	int acc_no;
+	char type;
+};
+
+class cur_acct : public account
+{
+	float balance;
+	float minBalance;
+	float service=0.2f;
+public:
+	void deposit(float bln)
+	{
+		balance+=bln;
+	}
+	void display() // display the balance
+	{
+		cout<<"Current Balance: "<<balance<<endl;
+	}
+	void withdraw(float bln) // permit withdrawal and update balance
+	{
+		if(balance<minBalance) {
+			balance-=service;
+		}
+		balance-=bln;
+		if(balance<0) {
+			balance=0;
+		}
+	}
+	void check() // check
+	{}
+};
+
+class sav_acct : public account
+{
+	float balance;
+public:
+	void deposit(float bln)
+	{
+		balance+=bln;
+	}
+	void display() // display the balance
+	{
+		cout<<"Current Balance: "<<balance<<endl;
+	}
+	void interest(float r, int n, int t) // compute and deposit interest
+	{
+		balance=balance*pow((1+((r*1.0)/n)),(n*t));
+	}
+	void withdraw(float _balance) // permit withdrawal and update balance
+	{
+		if(balance<_balance) {
+			cout<<"NOT POSSIBLE\n";
+		} else {
+			balance-=_balance;
+		}
+	}
+};
+
+int main()
+{
+	return 0;
+}
+\end{lstlisting}
+
+\section{Inheritance - Bank Accounts using Constructors}
+\textbf{Problem 5.2} \textit{Rewrite the above problem using constructors}
+
+\textit{Code.}
+\begin{lstlisting}
+#include<stdio.h>
+#include<iostream>
+using namespace std;
+
+class account
+{
+	string cust_name;
+	int acc_no;
+	char type;
+public:
+	account() {}
+	account(string name, int no, char t)
+	{
+		cust_name=name;
+		acc_no=no;
+		type=t;
+	}
+};
+
+class cur_acct:public account
+{
+	float balance;
+	float minBalance;
+	float service;
+public:
+	cur_acct(float b, float mn, float ser)
+	{
+		balance=b;
+		minBalance=mn;
+		service=ser;
+	}
+	void deposit(float bln)
+	{
+		balance+=bln;
+	}
+	void display() // display the balance
+	{
+		cout<<"Current Balance: "<<balance<<endl;
+	}
+	void withdraw(float bln) 
+	{
+		if(balance<minBalance) {
+			balance-=service;
+		}
+		balance-=bln;
+		if(balance<0) {
+			balance=0;
+		}
+	}
+	void check() // check
+	{}
+};
+
+class sav_acct:public account
+{
+	float balance;
+public:
+	sav_acct(float b)
+	{
+		balance=b;
+	}
+	void deposit(float bln)
+	{
+		balance+=bln;
+	}
+	void display() // display the balance
+	{
+		cout<<"Current Balance: "<<balance<<endl;
+	}
+	void interest(float r, int n, int t)
+	{
+		balance=balance*pow((1+((r*1.0)/n)),(n*t));
+	}
+	void withdraw(float _balance)
+	{
+		if(balance<_balance) {
+			cout<<"NOT POSSIBLE\n";
+		} else {
+			balance-=_balance;
+		}
+	}
+};
+
+int main()
+{
+	return 0;
+}
+\end{lstlisting}
+
+
+\section{Inheritance - Educational Institute}
+\textbf{Problem 5.3} \textit{An educational institution wishes to maintain a database of its employees. The database is divided into a number of classes whose
+hierarchical relationships are shown in figure below. The figure also
+shows the minimum information required for each class. Specify all
+the classes and define functions to create the database and retrieve
+individual information as and when required.}
+
+\begin{center}
+
+
+\begin{figure}[h!]
+  \includegraphics[width=130mm]{cpp_5_3.jpg}
+  \label{fig:boat1}
+\end{figure}
+
+\end{center}
+
+\textit{Code.}
+\begin{lstlisting}
+#include<stdio.h>
+#include<stdlib.h>
+#include<string>
+#include<iostream>
+using namespace std;
+class Staff
+{
+public:
+	string code_name;
+	virtual void display()=0;
+};
+class Teacher : public Staff
+{
+public:
+	string subj;
+	string publ;
+	void init(string code, string _subj, string _publ)
+	{
+		code_name=code;
+		subj=_subj;
+		publ=_publ;
+	}
+	void display()
+	{
+		cout<<"Code name: "<<code_name<<endl;
+		cout<<"Teacher subj =  "<<subj<<"\tTeacher publ "<<publ;
+	}
+};
+class Typist : public Staff
+{
+public:
+	int speed;
+	void init(string code, int s)
+	{
+		code_name=code;
+		speed=s;
+	}
+	void display()
+	{
+		cout<<"Code name: "<<code_name<<endl;
+		cout<<"Speed of Typist "<<speed;
+	}
+};
+class Officer : public Staff
+{
+public:
+	char grade;
+	void init(string code, char g)
+	{
+		code_name=code;
+		grade=g;
+	}
+	void display()
+	{
+		cout<<"Code name: "<<code_name<<endl;
+		cout<<"Class of Officer "<<grade;
+	}
+};
+class regular : public Typist
+{
+public:
+	void typ(string code, int speed)
+	{
+		init(code, speed);
+	}
+	void display()
+	{
+		cout<<"Code name: "<<code_name<<endl;
+		cout<<"Regular Typist\n";
+	}
+};
+class casual : public Typist
+{
+public:
+	int wage;
+	void typ(string code, int speed, int _wage)
+	{
+		init(code, speed);
+		wage=_wage;
+	}
+	void display()
+	{
+		cout<<"Code name: "<<code_name<<endl;
+		cout<<"Daily Wages: "<<wage;
+	}
+};
+int main()
+{
+	vector<Staff *> database;
+	Teacher t;
+	t.init("T010", "CSE", "CLRS");
+	regular tr;
+	tr.typ("TPR010", 2);
+	casual cst;
+	cst.typ("TRC011",5,500);
+	Officer of;
+	of.init("OF010", 'C');
+	database.push_back(&t);
+	database.push_back(&tr);
+	database.push_back(&cst);
+	database.push_back(&of);
+	int i;
+	for(i=0;i<database.size();i++) {
+		Staff *s=database[i];
+		s->display();
+	}
+	return 0;
+}
+\end{lstlisting}
+
+
+\textit{Output.}
+\begin{lstlisting}
+Code name: T010
+Teacher subj =  CSE     Teacher publ CLRSCode name: TPR010
+Regular Typist
+Code name: TRC011
+Daily Wages: 500Code name: OF010
+Class of Officer C
+\end{lstlisting}
+
+
+\section{Inheritance - Class Network}
+\textbf{Problem 5.4} \textit{Consider a class network as shown below. Define all four classes and write a program to create, update and display the information
+contained in master objects.}
+
+\begin{center}
+
+
+\begin{figure}[h!]
+  \includegraphics[width=130mm]{cpp_5_4.jpg}
+  \label{fig:boat1}
+\end{figure}
+
+\end{center}
+
+\textit{Code.}
+\begin{lstlisting}
+#include<stdio.h>
+#include<stdlib.h>
+#include<string>
+using namespace std;
+
+class master
+{
+public:
+	string name;
+	string code;
+	//virtual void display()=0;
+	void inp(string _name, string _code)
+	{
+		name=_name;
+		code=_code;
+	}
+};
+
+class account : public master
+{
+public:
+	int pay;
+	void init1(string _name, string _code, int _pay)
+	{
+		inp(_name, _code);
+		pay=_pay;
+	}
+	void display1()
+	{
+		cout<<"Name: "<<name<<" code: "<<code<<" pay: "<<pay<<endl;
+	}
+};
+
+class admin : public master
+{
+public:
+	int exp;
+	void init2(string _name, string _code, int _exp)
+	{
+		inp(_name, _code);
+		exp=_exp;
+	}
+	void display2()
+	{
+		cout<<"Name: "<<name<<" code: "<<code<<" exp: "<<exp<<endl;
+	}
+};
+
+class person : public admin, public account
+{
+public:
+	void initialise(string _name, string _code, int _exp, int _pay)
+	{
+		init1(_name, _code, _pay);
+		init2(_name, _code, _exp);
+	}
+	void display()
+	{
+		display1();
+		display2();
+	}
+};
+
+int main()
+{
+	person p1;
+	p1.initialise("Rudra", "CS101", 2, 0);
+	p1.display();
+	return 0;
+}
+\end{lstlisting}
+
+
+\textit{Output.}
+\begin{lstlisting}
+Name: Rudra code: CS101 pay: 0
+Name: Rudra code: CS101 exp: 2
+\end{lstlisting}
+
+\section{Inheritance - Virtual methods}
+\textbf{Problem 6.1} \textit{Write a program implementing \textbf{Shape} class, from which Triangle and Rectangle inherit. Use ’virtual’.}
+
+\begin{center}
+
+
+\end{center}
+
+\textit{Code.}
+\begin{lstlisting}
+#include<stdio.h>
+#include<stdlib.h>
+#include<string>
+#include<iostream>
+#define DEBUG(x) cout<< '>' << #x<<':'<<x<<endl;
+using namespace std;
+class Shape
+{
+public:
+	double l,b;
+	
+	void getData(double _l, double _b)
+	{
+		l=_l;
+		b=_b;
+	}
+	
+	virtual void display_area()
+	{}
+};
+
+class triangle : public Shape
+{
+	void getData(double _l, double _b)
+	{
+		l=_l;
+		b=_b;
+	}
+	void display_area()
+	{
+		double areaTriangle=0.5*l*b;
+		DEBUG(areaTriangle)
+	}
+};
+class rectangle : public Shape
+{
+	void getData(double _l, double _b)
+	{
+		l=_l;
+		b=_b;
+	}
+	void display_area()
+	{
+		double areaRectangle=l*b;
+		DEBUG(areaRectangle)
+	}
+};
+int main()
+{
+	Shape *s;
+	char ch; // choice
+	cout<<"Rectangle(r) or Triangle(t) ? \n";
+	cin>>ch;
+	if(ch=='r' || ch=='R') {
+		rectangle r;
+		s=&r;
+		double x,y;
+		cout<<"Enter the  value of sides\n";
+		cin>>x>>y;
+		s->getData(x,y);
+		s->display_area();
+	} else if(ch=='t' || ch=='T') {
+		triangle t;
+		s=&t;
+		double x,y;
+		cout<<"Enter the  value of sides\n";
+		cin>>x>>y;
+		s->getData(x,y);
+		s->display_area();
+	} else {
+		cout<<"Wrong choice";
+	}
+	return 0;
+}
+\end{lstlisting}
+
+
+\textit{Output.}
+\begin{lstlisting}
+Rectangle(r) or Triangle(t) ? 
+r
+Enter the  value of sides
+45
+56
+>areaRectangle:2520
+\end{lstlisting}
+
+\section{Inheritance - Area of circle}
+\textbf{Problem 6.2} \textit{Extend the above program to calculate the area of Circle.}
+
+\textit{Code.}
+\begin{lstlisting}
+#include<stdio.h>
+#include<stdlib.h>
+#include<string>
+#include<iostream>
+
+#define DEBUG(x) cout<< '>' << #x<<':'<<x<<endl;
+#define PI 3.14156
+
+using namespace std;
+
+class Shape
+{
+public:
+	double l,b;
+	
+	void getData(double _l, double _b)
+	{
+		l=_l;
+		b=_b;
+	}
+	
+	virtual void display_area()
+	{}
+};
+
+class triangle : public Shape
+{
+	void getData(double _l, double _b)
+	{
+		l=_l;
+		b=_b;
+	}
+	void display_area()
+	{
+		double areaTriangle=0.5*l*b;
+		DEBUG(areaTriangle)
+	}
+};
+
+class rectangle : public Shape
+{
+	void getData(double _l, double _b)
+	{
+		l=_l;
+		b=_b;
+	}
+	void display_area()
+	{
+		double areaRectangle=l*b;
+		DEBUG(areaRectangle)
+	}
+};
+
+class circle : public Shape
+{
+	void getData(double _l, double _b)
+	{
+		l=_l;
+		b=0;
+	}
+	void display_area()
+	{
+		double areaCircle=PI*l*l;
+		DEBUG(areaCircle)
+	}
+};
+
+int main()
+{
+	Shape *s;
+	char ch; // choice
+	cout<<"Rectangle(r) or Triangle(t) or Circle (c)? \n";
+	cin>>ch;
+	if(ch=='r' || ch=='R') {
+		rectangle r;
+		s=&r;
+		double x,y;
+		cout<<"Enter the  value of sides\n";
+		cin>>x>>y;
+		s->getData(x,y);
+		s->display_area();
+	} else if(ch=='t' || ch=='T') {
+		triangle t;
+		s=&t;
+		double x,y;
+		cout<<"Enter the  value of sides\n";
+		cin>>x>>y;
+		s->getData(x,y);
+		s->display_area();
+	} else if(ch=='c' || ch=='C') {
+		circle c;
+		s=&c;
+		double x;
+		cin>>x;
+		s->getData(x,0);
+		s->display_area();
+	} else {
+		cout<<"Wrong choice";
+	}
+	return 0;
+}
+\end{lstlisting}
+
+
+\textit{Output.}
+\begin{lstlisting}
+Rectangle(r) or Triangle(t) or Circle (c)? 
+c
+5
+>areaCircle:78.539
+\end{lstlisting}
+
+\section{Inheritance - Non virtual methods}
+\textbf{Problem 6.3} \textit{Modify the above program by removing the virtual keywords from the methods. Comment the result}
+
+\textbf{Result.} \textit{No Change}
+
+\section{Function Template}
+\textbf{Problem 7.1} \textit{.Write a Function Template for finding the minimum value contained in an array.}
+
+\textit{Code.}
+\begin{lstlisting}
+#include <iostream>
+using namespace std;
+
+template <typename T>
+void find_min(T* a, int n)
+{
+    T mn=a[0];
+    int i;
+    for(i=1;i<n;i++) {
+        if(mn>a[i]) {
+            mn=a[i];
+        }
+    }
+    cout<<"Min is: "<<mn;
+}
+
+int main() {
+	int n,i;
+	cin>>n;
+	int a[n];
+	float b[n];
+	cout<<"Enter int values: "<<endl;
+	for(i=0;i<n;i++) {
+	    cin>>a[i];
+	}
+	find_min(a, n);
+	cout<<"\nEnter float values: "<<endl;
+	for(i=0;i<n;i++) {
+	    cin>>b[i];
+	}
+	find_min(b, n);
+	return 0;
+}
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+5
+Enter int values: 
+5 -1 2 3 4
+Min is: -1
+Enter float values: 
+-2.0 -1.2 5 6 8
+Min is: -2
+\end{lstlisting}
+
+\section{Vector Operations}
+\textbf{Problem 7.2} \textit{.Write a Class Template to represent a generic vector. Include member functions to perform the following tasks. \\
+a) To create a vector\\
+b) To modify the value of a given vector.\\ 
+c) To multiply by a scalar. \\
+d) To display the vector in the form of (10,20,30 . . . )}
+
+\textit{Code.}
+\begin{lstlisting}
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+template <class T>
+class vec {
+    vector<T> g;
+public:
+    vec() {}
+    void create()
+    {
+        createUtil();
+    }
+    void modify()
+    {
+        T mod, with;
+        cout<<"Enter value of element to modify: ";
+        cin>>mod;
+        cout<<"Enter value to modify to: ";
+        cin>>with;
+        modifyUtil(mod, with);
+    }
+    void mult()
+    {
+        int m;
+        cout<<"Enter value to multiply with (int): ";
+        cin>>m;
+        multUtil(m);
+    }
+    void display()
+    {
+        displayUtil();
+    }
+private:
+    void createUtil()
+    {
+        //cout<<"Press -1 to stop pushing to vector\n";
+        T element;
+        char ch;
+        while(true) {
+            cout<<"Want to exit ? [y/n]: ";
+            cin>>ch;
+            if(ch=='Y'||ch=='y') {
+                break;
+            }
+            cin>>element;
+            g.push_back(element);
+        }
+    }
+    void modifyUtil(T mod, T with)
+    {
+        int i;
+        for(i=0;i<g.size();i++) {
+            if(g[i]==mod) {
+                g[i]=with;
+            }
+        }
+    }
+    void multUtil(int m)
+    {
+        int i;
+        for(i=0;i<g.size();i++) {
+            g[i]*=m;
+        }
+    }
+    void displayUtil()
+    {
+        cout<<"Current Vector: \n";
+        int i;
+        for(i=0;i<g.size();i++) {
+            cout<<g[i]<<" "<<endl;
+        }
+        cout<<"\n---------------------\n";
+    }
+};
+
+int main()
+{
+    vec<int> st;
+    st.create();
+    st.display();
+    st.modify();
+    st.display();
+    st.mult();
+    st.display();
+    return 0;
+}
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+Want to exit ? [y/n]: n
+56
+Want to exit ? [y/n]: n
+45
+Want to exit ? [y/n]: y
+Current Vector: 
+56 
+45 
+
+---------------------
+Enter value of element to modify: 56
+Enter value to modify to: 89
+Current Vector: 
+89 
+45 
+
+---------------------
+Enter value to multiply with (int): 2
+Current Vector: 
+178 
+90 
+
+---------------------
+\end{lstlisting}
+
+\section{Multi catch statements}
+\textbf{Problem 8.1} \textit{Write a program that illustrates multi-catch statements}
+
+\textit{Code.}
+\begin{lstlisting}
+#include<iostream>
+using namespace std;
+void exep(int a, int b)
+{
+	if(a==b) {
+		throw 0;
+	} else {
+		throw 1.0f;
+	}
+}
+void check(int a, int b)
+{
+	try {
+		exep(a,b);
+	} catch (int x) {
+		cout<<"Equal no.s\n";
+	} catch (float x) {
+		cout<<"Unequal no.s\n";
+	}
+}
+int main()
+{
+	check(10,10);
+	check(10,20);
+}
+\end{lstlisting}
+
+\textit{Code.}
+\begin{lstlisting}
+Equal no.s
+Unequal no.s
+\end{lstlisting}
+
+\section{Re-throwing exceptions}
+\textbf{Problem 8.2} \textit{Write a program that illustrates rethrowing of exceptions}
+
+\textit{Code.}
+\begin{lstlisting}
+#include<iostream>
+using namespace std;
+void exep()
+{
+	int x=1,y=2;
+	if((y-x)==2)
+		throw 'A';
+	else
+		throw 'B';
+}
+int main()
+{
+	try {
+		exep();
+	} catch(char ch) {
+		if(ch=='A') {
+			cout<<"Done\n";
+		} else {
+			throw 0;
+		}
+	}
+}
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+terminate called after throwing an instance of 'int'
+[1]    7083 abort (core dumped)  ./a.out
 \end{lstlisting}
 
 \end{document}

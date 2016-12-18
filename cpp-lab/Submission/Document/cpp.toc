@@ -11,3 +11,17 @@
 \contentsline {section}{\numberline {11}Friend Function}{14}
 \contentsline {section}{\numberline {12}Distance}{15}
 \contentsline {section}{\numberline {13}User defined String class}{17}
+\contentsline {section}{\numberline {14}Operator Overloading on a user defined Float Class}{18}
+\contentsline {section}{\numberline {15}Operator Overloading on a Matrix}{19}
+\contentsline {section}{\numberline {16}Equals operation on String}{22}
+\contentsline {section}{\numberline {17}Inheritance - Savings and Current Bank Accounts}{23}
+\contentsline {section}{\numberline {18}Inheritance - Bank Accounts using Constructors}{24}
+\contentsline {section}{\numberline {19}Inheritance - Educational Institute}{26}
+\contentsline {section}{\numberline {20}Inheritance - Class Network}{29}
+\contentsline {section}{\numberline {21}Inheritance - Virtual methods}{31}
+\contentsline {section}{\numberline {22}Inheritance - Area of circle}{33}
+\contentsline {section}{\numberline {23}Inheritance - Non virtual methods}{35}
+\contentsline {section}{\numberline {24}Function Template}{35}
+\contentsline {section}{\numberline {25}Vector Operations}{36}
+\contentsline {section}{\numberline {26}Multi catch statements}{39}
+\contentsline {section}{\numberline {27}Re-throwing exceptions}{39}

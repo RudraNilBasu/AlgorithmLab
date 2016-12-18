@@ -119,7 +119,7 @@ int main()
 	c.getF();
 	// mult
 	c=a*b;
-	printf("a-b=\n");
+	printf("a*b=\n");
 	c.getF();
 	// end
 	return 0;
