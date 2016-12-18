@@ -1714,6 +1714,95 @@ public class a extends Applet
 \end{figure}
 
 
+\section{Week 9 - Exception Handling}
+\textbf{Problem 9.1} \textit{Demonstrate the use of try\{..\} finally\{...\} block}
+
+\textit{Code.}
+\begin{lstlisting}
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class Exep
+{
+	public static void main (String[] args)
+	{
+		int a[]={1,2,3,4,5};
+		try {
+		    System.out.println(a[5]);
+		} finally {
+		    System.out.println("Finally executed");
+		}
+	}
+}
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+Finally executed
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 5
+	at Exep.main(Main.java:10)
+\end{lstlisting}
+
+\textbf{Problem 9.2} \textit{Demonstrate the use of try\{..\} catch\{...\} finally\{...\} block}
+
+\textit{Code.}
+\begin{lstlisting}
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class Exep2
+{
+	public static void main (String[] args)
+	{
+		int a[]={1,2,3,4,5};
+		try {
+		    System.out.println(a[5]);
+		} catch(Exception e) {
+		    System.out.println("Error: "+e);
+		} finally {
+		    System.out.println("Finally executed");
+		}
+	}
+}
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+Error: java.lang.ArrayIndexOutOfBoundsException: 5
+Finally executed
+\end{lstlisting}
+
+\textbf{Problem 9.3} \textit{Demonstrate the use of try\{..\} catch(Exception e1)\{...\} catch(Exception e2)\{...\} finally\{...\} block}
+
+\textit{Code.}
+\begin{lstlisting}
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class Exep3
+{
+	public static void main (String[] args)
+	{
+		int a[]={1,2,3,4,5};
+		try {
+		    System.out.println(a[5]);
+		} catch(ArrayIndexOutOfBoundsException e) {
+		    System.out.println("IndexOutOfBoundsException ");
+		} catch(Exception e) {
+		    System.out.println("Error: "+e);
+		} finally {
+		    System.out.println("Finally executed");
+		}
+	}
+}
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+IndexOutOfBoundsException 
+Finally executed
+\end{lstlisting}
+
 %\begin{theorem}
 %This is a theorem statement.
 %\label{thm:sample-statement}

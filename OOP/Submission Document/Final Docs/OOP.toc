@@ -6,3 +6,4 @@
 \contentsline {section}{\numberline {6}Week 6 - Threads}{20}
 \contentsline {section}{\numberline {7}Week 7 - Producer Consumer Problem}{28}
 \contentsline {section}{\numberline {8}Week 8 - Applets}{31}
+\contentsline {section}{\numberline {9}Week 9 - Exception Handling}{33}

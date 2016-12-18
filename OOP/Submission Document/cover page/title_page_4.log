@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.12.14)  17 DEC 2016 01:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.12.14)  18 DEC 2016 23:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -26,24 +26,24 @@ File: bk10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 ) (./title_page_4.aux)
 \openout1 = `title_page_4.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 67.
+(Font)              <7> on input line 66.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 67.
+(Font)              <5> on input line 66.
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--67
+Underfull \hbox (badness 10000) in paragraph at lines 66--66
 
  []
 
