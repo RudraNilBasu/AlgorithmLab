@@ -1,0 +1,17 @@
+// pack an unpacked BCD no
+LXI H,9000
+MVI M,09
+INX H
+MVI M,04
+// FINAL NO = 94
+	LXI H,9000
+	MOV A,M
+	RLC
+	RLC
+	RLC
+	RLC
+	INX H
+	MOV B,M
+	ADD B
+	STA 9005
+	HLT
