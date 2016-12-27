@@ -1,0 +1,19 @@
+// count no of 1 in a no
+LXI H,9000
+MVI M,0F
+// MAIN PROG
+	LXI H,9000
+	MOV A,M
+LOOP1:
+	CPI 00
+	JZ EXIT
+	RAR
+	JNC NEXT
+	INR C
+NEXT:
+	ANI 7F
+	JMP LOOP1
+EXIT:
+	MOV A,C
+	STA 9005
+	HLT
