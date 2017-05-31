@@ -1,0 +1,4 @@
+select goal.player
+from game join goal
+on goal.matchid=game.id
+where (game.team2='GER' or game.team1='GER') and goal.teamid!='GER'

@@ -1,0 +1,1 @@
+insert into eteam (id, teamname, coach) values ('ARG', 'Argentina', 'Diego Maradona')

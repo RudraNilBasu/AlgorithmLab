@@ -1,0 +1,2 @@
+\contentsline {section}{\numberline {1}Week 1: Players}{2}
+\contentsline {subsection}{\numberline {1.1}Display player name, team id, stadium, and mdate for every German player}{2}

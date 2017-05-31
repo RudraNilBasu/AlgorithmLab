@@ -1,0 +1,1 @@
+select goal.player, goal.teamid, game.stadium, game.mdate from goal join game on goal.matchid=game.id where goal.teamid='GER'

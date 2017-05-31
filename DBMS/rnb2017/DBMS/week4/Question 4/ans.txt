@@ -1,0 +1,4 @@
+select game.mdate, game.stadium, eteam.teamname
+from game right join eteam
+on game.team1=eteam.id or game.team2=eteam.id
+where eteam.coach='Diego Maradona'

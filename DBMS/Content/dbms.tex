@@ -1,0 +1,123 @@
+\documentclass[12pt]{article}
+
+%\usepackage{fullpage}
+%\usepackage{epic}
+%\usepackage{eepic}
+%\usepackage{graphicx}
+
+\usepackage{listings} % Code
+\usepackage{fancyhdr} % header footer
+\usepackage{xcolor}  % Color
+\usepackage{mathtools} % Math
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+%\newcommand{\proof}[1]{
+%{\noindent {\it Proof.} {#1} \rule{2mm}{2mm} \vskip \belowdisplayskip}
+%}
+
+
+%\newtheorem{lemma}{Lemma}[section]
+%\newtheorem{theorem}[lemma]{Theorem}
+%\newtheorem{claim}[lemma]{Claim}
+%\newtheorem{definition}[lemma]{Definition}
+%\newtheorem{corollary}[lemma]{Corollary}
+
+%\setlength{\oddsidemargin}{0in}
+%\setlength{\topmargin}{0in}
+%\setlength{\textwidth}{6.5in}
+%\setlength{\textheight}{8.5in}
+
+\cfoot{footer}
+
+\lstset {
+%language=Java,
+backgroundcolor = \color{lightgray},
+                   language = C++,
+                   xleftmargin = 2mm,
+                   framexleftmargin = 1em
+%lineskip={-1.5pt}
+}
+
+%\usepackage[utf8]{inputenc}
+ 
+ 
+% Information about contents section
+%\title{Contents}
+%\author{Rudra Nil Basu}
+\date{ }
+ 
+%\renewcommand*\contentsname{Summary}
+
+\begin{document}
+
+% to generate the contents page
+%\maketitle
+\tableofcontents
+
+\newpage
+
+\setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
+\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+\addtolength{\boxlength}{-4mm}
+\begin{center}\framebox{\parbox{\boxlength}{\bf
+CS693: Object Oriented Programming Lab \hfill 
+Year: 2017
+%Date: 11/10/2016
+\\
+%DATE
+\hfill
+}}\end{center}
+\vspace{5mm}
+
+\section{Week 1: Players}
+
+\subsection{Display player name, team id, stadium, and mdate for every German player}
+
+\textit{Code.}
+
+\begin{lstlisting}
+SELECT Goal.player, Goal.teamid, Game.stadium, Game.mdate
+from Goal join Game
+on Goal.matchid = Game.id
+where Goal.teamid = 'GER'
+\end{lstlisting}
+
+\textit{Output.}
+\begin{lstlisting}
+-rw-rw-r--
+-rw-rw-r--
+drwxrwxr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+116.193.143.137.html
+124442-Pulse-Glass.tar.gz
+16___1366x768_wallpaper_pack_by_jhasenfusphoto-d4ddjpd
+16___1366x768_wallpaper_pack_by_jhasenfusphoto-d4ddjpd.zip
+17017156_1892189880877953_1020699469635668422_o.jpg
+171217-Breeze-GRUB2.tar.gz
+240P_400K_113924551.mp4
+7b0cff72-9a21-4567-8353-5d87c4696e26.html
+AdbeRdr9.5.5-1_i386linux_enu.deb
+android-ndk-r13b-linux-x86_64.zip
+android-studio-ide-143.3101438-linux.zip
+assignment-1.doc
+\end{lstlisting}
+
+
+\end{document}
+%\grid\grid
+\grid

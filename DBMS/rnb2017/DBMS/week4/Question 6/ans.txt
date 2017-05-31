@@ -1,0 +1,3 @@
+select emp.name as Employee, man.name as Manager
+from employee emp, employee man
+where emp.manager=man.id and (emp.empid=4 or emp.empid=6)

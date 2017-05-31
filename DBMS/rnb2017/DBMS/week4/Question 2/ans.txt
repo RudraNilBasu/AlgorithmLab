@@ -1,0 +1,4 @@
+select game.mdate, game.stadium, goal.player, goal.gtime
+from game left join goal
+on goal.matchid=game.id
+where game.id=1019 or game.id=1021

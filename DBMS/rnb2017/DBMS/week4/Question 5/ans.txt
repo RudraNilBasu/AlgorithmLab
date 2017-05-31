@@ -1,0 +1,3 @@
+select game.id, game.mdate, game.stadium, eteam.coach, eteam.teamname
+from game full outer join eteam
+on game.team2=eteam.id

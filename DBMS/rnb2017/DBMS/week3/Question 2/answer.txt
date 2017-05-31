@@ -1,0 +1,2 @@
+select game.team1, game.team2, goal.player from goal
+join game on goal.matchid=game.id where goal.player like 'Mario %'

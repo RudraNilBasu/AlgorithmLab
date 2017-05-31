@@ -1,0 +1,2 @@
+select goal.player, goal.teamid, eteam.coach, goal.gtime
+from goal join eteam on goal.teamid=eteam.id where goal.gtime <= 10

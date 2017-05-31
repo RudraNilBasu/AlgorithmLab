@@ -1,0 +1,5 @@
+select game.stadium, count(*)
+from goal join game
+on goal.matchid=game.id
+group by game.stadium
+order by count(*) asc

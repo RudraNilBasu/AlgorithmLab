@@ -1,0 +1,4 @@
+select goal.gtime, goal.player, game.stadium
+from game left join goal
+on goal.matchid=game.id
+where game.team1='GER'

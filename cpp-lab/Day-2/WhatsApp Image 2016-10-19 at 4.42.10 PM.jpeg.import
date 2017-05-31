@@ -1,0 +1,20 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/WhatsApp Image 2016-10-19 at 4.42.10 PM.jpeg-b46b9fc1dd9f74cf27e05b84bb85da19.stex"
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=true
+stream=false
+size_limit=0
+detect_3d=true
