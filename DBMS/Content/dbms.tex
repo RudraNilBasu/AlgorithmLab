@@ -9,6 +9,8 @@
 \usepackage{fancyhdr} % header footer
 \usepackage{xcolor}  % Color
 \usepackage{mathtools} % Math
+\usepackage{tabularx}
+\usepackage{csvsimple, filecontents}
 
 \usepackage{geometry}
  \geometry{
@@ -83,40 +85,397 @@ Year: 2017
 \textit{Code.}
 
 \begin{lstlisting}
-SELECT Goal.player, Goal.teamid, Game.stadium, Game.mdate
-from Goal join Game
-on Goal.matchid = Game.id
-where Goal.teamid = 'GER'
+select goal.player, goal.teamid, game.stadium, game.mdate
+from goal join game on goal.matchid=game.id
+where goal.teamid='GER'
 \end{lstlisting}
 
-\textit{Output.}
+\textit{Output.}\\
+\csvautotabular{output/output1.csv}
+
+\subsection{Show team1 and team2 and player for every goal scored by a player named 'Mario'}
+
+\textit{Code.}
+
 \begin{lstlisting}
--rw-rw-r--
--rw-rw-r--
-drwxrwxr-x
--rw-rw-r--
--rw-rw-r--
--rw-rw-r--
--rw-rw-r--
--rw-rw-r--
--rw-rw-r--
--rw-rw-r--
--rw-rw-r--
--rw-rw-r--
-116.193.143.137.html
-124442-Pulse-Glass.tar.gz
-16___1366x768_wallpaper_pack_by_jhasenfusphoto-d4ddjpd
-16___1366x768_wallpaper_pack_by_jhasenfusphoto-d4ddjpd.zip
-17017156_1892189880877953_1020699469635668422_o.jpg
-171217-Breeze-GRUB2.tar.gz
-240P_400K_113924551.mp4
-7b0cff72-9a21-4567-8353-5d87c4696e26.html
-AdbeRdr9.5.5-1_i386linux_enu.deb
-android-ndk-r13b-linux-x86_64.zip
-android-studio-ide-143.3101438-linux.zip
-assignment-1.doc
+select game.team1, game.team2, goal.player from goal
+join game on goal.matchid=game.id where goal.player like 'Mario %'
 \end{lstlisting}
 
+\textit{Output.}\\
+\csvautotabular{output/output2.csv}
+
+\subsection{Show player, teamid, coach, gtime, for all goals scored in the first 10 mins}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select goal.player, goal.teamid, eteam.coach, goal.gtime
+from goal join eteam on goal.teamid=eteam.id where goal.gtime <= 10
+\end{lstlisting}
+
+\textit{Output.}\\
+\csvautotabular{output/output3.csv}
+
+\subsection{List the player for every goal scored in a game whre the stadium was 'National Stadium, Warsaw'}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select goal.player
+from game join goal
+on game.id=goal.matchid
+where game.stadium='National Stadium, Warsaw'
+\end{lstlisting}
+
+\textit{Output.}\\
+\csvautotabular{output/output4.csv}
+
+\subsection{Show the name of the player who scored a goal against Germany('GER')}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select goal.player
+from game join goal
+on goal.matchid=game.id
+where (game.team2='GER' or game.team1='GER') and goal.teamid!='GER'
+\end{lstlisting}
+
+\textit{Output.}\\
+\csvautotabular{output/output5.csv}
+
+\subsection{Show the stadium and the number of goals scored in each stadium. Use count()}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select game.stadium, count(*)
+from goal join game
+on goal.matchid=game.id
+group by game.stadium
+order by count(*) asc
+\end{lstlisting}
+
+\textit{Output.}\\
+\csvautotabular{output/output6.csv}
+
+\subsection{List dates of all matches with 'Fernando Santos' as team1 coach}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select game.mdate, eteam.teamname
+from game join eteam
+on game.team1=eteam.id
+where eteam.coach='Fernando Santos'
+\end{lstlisting}
+
+\textit{Output.}\\
+\csvautotabular{output/output7.csv}
+
+\section{Week 2: Joins}
+
+\subsection{Insert a tupple in eteam}
+
+\textit{Code.}
+
+\begin{lstlisting}
+insert into eteam (id, teamname, coach) values ('ARG', 'Argentina',
+ 'Diego Maradona')
+
+
+1 row(s) inserted.
+
+0.13 seconds
+\end{lstlisting}
+
+\subsection{Show the matchdate,stadium,player name,goal time for match ids 1019 and 1021}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select game.mdate, game.stadium, goal.player, goal.gtime
+from game left join goal
+on goal.matchid=game.id
+where game.id=1019 or game.id=1021
+\end{lstlisting}
+
+\textit{Output.}\\
+\csvautotabular{output/output8.csv}
+
+\subsection{Show all the goal time,player, stadium where first team was Germany}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select goal.gtime, goal.player, game.stadium
+from game left join goal
+on goal.matchid=game.id
+where game.team1='GER'
+\end{lstlisting}
+
+\textit{Output.}\\
+\csvautotabular{output/output9.csv}
+
+\subsection{Show the matchdate,stadium,teamname where Diego Maradona was the coach. Use right join}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select game.mdate, game.stadium, eteam.teamname
+from game right join eteam
+on game.team1=eteam.id or game.team2=eteam.id
+where eteam.coach='Diego Maradona'
+\end{lstlisting}
+
+\textit{Output.}\\
+\csvautotabular{output/output10.csv}
+
+\subsection{Show id,matchdate,stadium,coach and team name for all team2. Use full outer join}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select game.id, game.mdate, game.stadium, eteam.coach, eteam.teamname
+from game full outer join eteam
+on game.team2=eteam.id
+\end{lstlisting}
+
+\textit{Output.}\\
+\csvautotabular{output/output11.csv}
+
+\section{Week 3: Employee}
+
+\subsection{Show employee name and Manager name for Employee ID 4 and 6}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select b.name as Employee, a.name as Manager 
+from employee a,employee b
+where a.empid=b.manager and (b.empid=4 or b.empid=6)
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{Show the entire list of employee name and employee id under manager "Palash Roy"}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select distinct emp.name as Employee, man.name as Manager 
+from employee emp,employee man
+where emp.manager=man.empid and man.empid=4
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\section{Week 4: Client Master}
+
+\subsection{Retrieve the list of names, city and the states of all the clients}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select name, city, state from client_master
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{List all the clients who are located in Mumbai}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select name from client_master
+where city='Mumbai'
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{List the various products available from the PRODUCT-MASTER table}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select description from product_master
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{Change the city of Client\_No 'C00005' to Bangalore}
+
+\textit{Code.}
+
+\begin{lstlisting}
+update client_master
+set city='Bangalore'
+where client_no='C00005'
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{Add a column called 'Telephone' of datatype 'number' and size='10' to the Client\_Master table}
+
+\textit{Code.}
+
+\begin{lstlisting}
+alter table client_master
+add Telephone number(10)
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{Delete the column 'Telephone'}
+
+\textit{Code.}
+
+\begin{lstlisting}
+alter table client_master
+drop column Telephone
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{Change the name of Client\_Master to Clnt\_Mast}
+
+\textit{Code.}
+
+\begin{lstlisting}
+rename client_master to clnt_mast
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{List the names of all clients having 'a' letter in their names}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select name from clnt_mast
+where name like '%a%'
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{List the names of the clients who stay in 'Bangalore' or 'Mangalore'}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select name from clnt_mast
+where city like '_angalore'
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{List the names of the clients having 'h' as the second letter in their names}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select name from clnt_mast
+where name like '_h%'
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{List all the information from the Sales\_Order table for orders placed in the month of June}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select * from sales_order
+where order_date like '%JUN%'
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{List the information for Client\_No 'C00001' and 'C00002'}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select * from sales_order
+where client_no='C00001' or client_no='C00002'
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{List products whose selling price is greater than 500 and less than 700}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select * from product_master
+where sell_price > 500 and sell_price < 700
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{List the names, city and states of clients who are not in the state of 'Maharashtra'}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select name,city,state from clnt_mast
+where state <> 'Maharashtra'
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{List the products whose selling price is more than 500. Calculate a new selling price as, original selling price * 15. Rename the new column in the output of the above query as New\_Price.}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select description, sell_price*15 as new_price 
+from product_master
+where sell_price > 500
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{Count the number of products having sell\_price less than or equal to 500.}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select count(sell_price) from product_master
+where sell_price < = 500
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\subsection{List the order number and day on which clients placed their order.}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select name,order_no,order_date,to_char(to_date(order_date,
+'dd/mm/yyyy'), 'DY') as day
+from sales_order join clnt_mast on 
+clnt_mast.client_no=sales_order.client_no
+\end{lstlisting}
+
+\textit{Output.}\\
+
+\section{Week 6}
+
+\subsection{Show the stadium and the number of goals scored in each stadium. For every match where 'GER' scored, show matchid, match date and the number of goals scored by 'GER'.}
+
+\textit{Code.}
+
+\begin{lstlisting}
+select matchid,mdate,count(*)
+from game join goal 
+on goal.matchid=game.id
+where teamid='GER'
+group by mdate,matchid
+\end{lstlisting}
+
+\textit{Output.}\\
 
 \end{document}
 %\grid\grid
