@@ -1,0 +1,12 @@
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| client_no | int(11)     | NO   | PRI | NULL    |       |
+| name      | varchar(20) | YES  |     | NULL    |       |
+| address   | varchar(30) | YES  |     | NULL    |       |
+| city      | varchar(15) | YES  |     | NULL    |       |
+| pincode   | int(11)     | YES  |     | NULL    |       |
+| state     | varchar(15) | YES  |     | NULL    |       |
+| telephone | int(10)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+

@@ -69,7 +69,7 @@ backgroundcolor = \color{lightgray},
 \newlength{\boxlength}\setlength{\boxlength}{\textwidth}
 \addtolength{\boxlength}{-4mm}
 \begin{center}\framebox{\parbox{\boxlength}{\bf
-CS693: Object Oriented Programming Lab \hfill 
+CS691: Database Management System Lab \hfill 
 Year: 2017
 %Date: 11/10/2016
 \\
@@ -258,6 +258,7 @@ where a.empid=b.manager and (b.empid=4 or b.empid=6)
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week4/q5.csv}
 
 \subsection{Show the entire list of employee name and employee id under manager "Palash Roy"}
 
@@ -270,6 +271,7 @@ where emp.manager=man.empid and man.empid=4
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week4/q6.csv}
 
 \section{Week 4: Client Master}
 
@@ -282,6 +284,7 @@ select name, city, state from client_master
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week5/q1.csv}
 
 \subsection{List all the clients who are located in Mumbai}
 
@@ -293,6 +296,7 @@ where city='Mumbai'
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week5/q2.csv}
 
 \subsection{List the various products available from the PRODUCT-MASTER table}
 
@@ -303,6 +307,7 @@ select description from product_master
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week5/q3.csv}
 
 \subsection{Change the city of Client\_No 'C00005' to Bangalore}
 
@@ -315,6 +320,7 @@ where client_no='C00005'
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week5/q4.csv}
 
 \subsection{Add a column called 'Telephone' of datatype 'number' and size='10' to the Client\_Master table}
 
@@ -326,6 +332,7 @@ add Telephone number(10)
 \end{lstlisting}
 
 \textit{Output.}\\
+%\csvautotabular{output/Week5/q5.csv}
 
 \subsection{Delete the column 'Telephone'}
 
@@ -337,6 +344,7 @@ drop column Telephone
 \end{lstlisting}
 
 \textit{Output.}\\
+%\csvautotabular{output/Week5/q6.csv}
 
 \subsection{Change the name of Client\_Master to Clnt\_Mast}
 
@@ -347,6 +355,7 @@ rename client_master to clnt_mast
 \end{lstlisting}
 
 \textit{Output.}\\
+%\csvautotabular{output/Week5/q7.csv}
 
 \subsection{List the names of all clients having 'a' letter in their names}
 
@@ -358,6 +367,7 @@ where name like '%a%'
 \end{lstlisting}
 
 \textit{Output.}\\
+%\csvautotabular{output/Week5/q8.csv}
 
 \subsection{List the names of the clients who stay in 'Bangalore' or 'Mangalore'}
 
@@ -369,6 +379,7 @@ where city like '_angalore'
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week5/q9.csv}
 
 \subsection{List the names of the clients having 'h' as the second letter in their names}
 
@@ -380,6 +391,7 @@ where name like '_h%'
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week5/q10.csv}
 
 \subsection{List all the information from the Sales\_Order table for orders placed in the month of June}
 
@@ -391,6 +403,7 @@ where order_date like '%JUN%'
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week5/q11.csv}
 
 \subsection{List the information for Client\_No 'C00001' and 'C00002'}
 
@@ -402,6 +415,7 @@ where client_no='C00001' or client_no='C00002'
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week5/q12.csv}
 
 \subsection{List products whose selling price is greater than 500 and less than 700}
 
@@ -413,6 +427,7 @@ where sell_price > 500 and sell_price < 700
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week5/q13.csv}
 
 \subsection{List the names, city and states of clients who are not in the state of 'Maharashtra'}
 
@@ -424,6 +439,7 @@ where state <> 'Maharashtra'
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week5/q14.csv}
 
 \subsection{List the products whose selling price is more than 500. Calculate a new selling price as, original selling price * 15. Rename the new column in the output of the above query as New\_Price.}
 
@@ -436,6 +452,7 @@ where sell_price > 500
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week5/q15.csv}
 
 \subsection{Count the number of products having sell\_price less than or equal to 500.}
 
@@ -447,6 +464,7 @@ where sell_price < = 500
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week5/q16.csv}
 
 \subsection{List the order number and day on which clients placed their order.}
 
@@ -460,6 +478,7 @@ clnt_mast.client_no=sales_order.client_no
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week5/q18.csv}
 
 \section{Week 5}
 
@@ -495,6 +514,7 @@ where teacher.dept is not null
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week6/q2.csv}
 
 \subsection{Show teachers name, id, mobile and dept name}
 
@@ -506,6 +526,7 @@ from dept full outer join teacher on teacher.dept=dept.id
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week6/q3.csv}
 
 \subsection{Use a different JOIN so that all teachers are listed.}
 
@@ -517,6 +538,19 @@ from dept left outer join teacher on teacher.dept=dept.id
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week6/q4.csv}
+
+\subsection{Use a different JOIN so that all departments are listed}
+
+\textit{Code.}
+
+\begin{lstlisting}[showstringspaces=false]
+select teacher.name, teacher.id, dept.name 
+from dept left outer join teacher on teacher.dept=dept.id
+\end{lstlisting}
+
+\textit{Output.}\\
+\csvautotabular{output/Week6/q5.csv}
 
 \subsection{Use COALESCE to print the mobile number. Use the number '07986 444 2266' if there is no number given. Show teacher name and mobile number or '07986 444 2266'}
 
@@ -529,6 +563,7 @@ from teacher
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week6/q6.csv}
 
 \subsection{Use the COALESCE function and a LEFT JOIN to print the teacher name and department name. Use the string 'None' where there is no department.}
 
@@ -540,6 +575,7 @@ from teacher left join dept on teacher.dept=dept.id
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week6/q7.csv}
 
 \subsection{Use COUNT to show the number of teachers and the number of mobile phones.}
 
@@ -552,6 +588,7 @@ from teacher
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week6/q8.csv}
 
 \subsection{Use COUNT and GROUP BY dept.name to show each department and the number of staff. Use a RIGHT JOIN to ensure that the Engineering department is listed.}
 
@@ -564,6 +601,7 @@ group by dept.name
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week6/q9.csv}
 
 \subsection{Use CASE to show the name of each teacher followed by 'Sci' if the teacher is in dept 1 or 2 and 'Art' otherwise.}
 
@@ -578,6 +616,7 @@ from teacher
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week6/q10.csv}
 
 \subsection{Use CASE to show the name of each teacher followed by 'Sci' if the teacher is in dept 1 or 2, show 'Art' if the teacher's dept is 3 and 'None' otherwise.}
 
@@ -593,6 +632,7 @@ from teacher
 \end{lstlisting}
 
 \textit{Output.}\\
+\csvautotabular{output/Week6/q11.csv}
 
 \end{document}
 %\grid\grid

@@ -1,0 +1,32 @@
+ID,MDATE,STADIUM,TEAM1,TEAM2
+1001,06/08/12,National Stadium (Warsaw),POL,GRE
+1002,06/08/12,Stadion Miejski (Wroclaw),RUS,CZE
+1003,06/12/12,Stadion Miejski (Wroclaw),GRE,CZE
+1004,06/12/12,National Stadium (Warsaw),POL,RUS
+1005,06/16/12,Stadion Miejski (Wroclaw),CZE,POL
+1006,06/16/12,National Stadium (Warsaw),GRE,RUS
+1007,06/09/12,Metalist Stadium,NED,DEN
+1008,06/09/12,Arena Lviv,GER,POR
+1009,06/13/12,Arena Lviv,DEN,POR
+1010,06/13/12,Metalist Stadium,NED,GER
+1011,06/17/12,Metalist Stadium,POR,NED
+1012,06/17/12,Arena Lviv,DEN,GER
+1013,06/10/12,PGE Arena Gdansk,ESP,ITA
+1014,06/10/12,Stadion Miejski (Poznan),IRL,CRO
+1015,06/14/12,Stadion Miejski (Poznan),ITA,CRO
+1016,06/14/12,PGE Arena Gdansk,ESP,IRL
+1017,06/18/12,PGE Arena Gdansk,CRO,ESP
+1018,06/18/12,Stadion Miejski (Poznan),ITA,IRL
+1019,06/11/12,Donbass Arena,FRA,ENG
+1020,06/11/12,Olimpiyskiy National Sports Complex,UKR,SWE
+1021,06/15/12,Donbass Arena,UKR,FRA
+1022,06/15/12,Olimpiyskiy National Sports Complex,SWE,ENG
+1023,06/19/12,Donbass Arena,ENG,UKR
+1024,06/19/12,Olimpiyskiy National Sports Complex,SWE,FRA
+1025,06/21/12,National Stadium (Warsaw),CZE,POR
+1026,06/22/12,PGE Arena Gdansk,GER,GRE
+1027,06/23/12,Donbass Arena,ESP,FRA
+1028,06/24/12,Olimpiyskiy National Sports Complex,ENG,ITA
+1029,06/27/12,Donbass Arena,POR,ESP
+1030,06/28/12,National Stadium (Warsaw),GER,ITA
+1031,07/01/12,Olimpiyskiy National Sports Complex,ESP,ITA

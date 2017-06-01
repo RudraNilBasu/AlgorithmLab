@@ -1,0 +1,188 @@
+create table client_master (
+client_no varchar2(6) primary key, 
+name varchar2(20), 
+address varchar2(30), 
+city varchar2(15), 
+pincode number(8), 
+state varchar2(15)
+);
+
+create table product_master (
+product_no varchar2(6) primary key, 
+description varchar2(15) not null, 
+profit_percent number(4,2) not null, 
+unit_measure varchar2(10) not null, 
+sell_price number(8,2) not null check (sell_price>0), 
+cost_price number(8,2) not null check (cost_price>0)
+);
+
+create table sales_order (
+order_no varchar2(6) primary key, 
+client_no varchar2(6), 
+order_date date not null, 
+delydate date, check (delydate>= order_date), 
+order_status varchar2(10),
+CONSTRAINT chk_order_status check (order_status in ('In Process','Fulfilled','Back','Order','Cancelled')),
+CONSTRAINT fk_client_no
+FOREIGN KEY (client_no) REFERENCES client_master (client_no)
+);
+
+insert into product_master
+values ('P0345', 'Shirts', 6, 'Piece', 500, 350),
+('P06734', 'Cotton Jeans', 5, 'Piece', 600, 450),
+('P07868', 'Trousers', 2, 'Piece', 850, 550),
+('P07885', 'Pull Overs', 2.5, 'Piece', 700, 450);
+
+insert into sales_order 
+values
+('O46866', 'C00004', '20-May-17', '22-May-17', 'Cancelled');
+
+1. 
+select name, city, state from client_master
+
+"NAME","CITY","STATE"
+"Ahana Banerjee","Kolkata","West Bengal"
+"Mamta Paul","Chennai","Tamil Nadu"
+"Chhya Banker","Mumbai","Maharashtra"
+"Ashwini Joshi","Bangalore","Karnataka"
+"Deepak Sharma","Mangalore","Karnataka"
+
+2.
+select name from client_master
+where city='Mumbai'
+ 
+"Chhya Banker"
+
+3.
+select description from product_master
+
+"DESCRIPTION"
+"T-Shirt"
+"Shirts"
+"Cotton Jeans"
+"Trousers"
+"Pull Overs"
+
+4.
+update client_master
+set city='Bangalore'
+where client_no='C00005'
+
+"CLIENT_NO","NAME","ADDRESS","CITY","PINCODE","STATE"
+"C00001","Ahana Banerjee","","Kolkata","700006","West Bengal"
+"C00002","Mamta Paul","","Chennai","780001","Tamil Nadu"
+"C00003","Chhya Banker","","Mumbai","400057","Maharashtra"
+"C00004","Ashwini Joshi","","Bangalore","560001","Karnataka"
+"C00005","Deepak Sharma","","Bangalore","560050","Karnataka"
+ 
+ 
+5.
+alter table client_master
+add Telephone number(10)
+
+6.
+alter table client_master
+drop column Telephone
+
+8.
+rename client_master to clnt_mast
+
+9.
+select name from clnt_mast
+where name like '%a%'
+
+"NAME"
+"Ahana Banerjee"
+"Mamta Paul"
+"Chhya Banker"
+"Deepak Sharma"
+
+10.
+select name from clnt_mast
+where city like '_angalore'
+
+"CLIENT_NO","NAME","ADDRESS","CITY","PINCODE","STATE"
+"C00004","Ashwini Joshi","","Bangalore","560001","Karnataka"
+"C00005","Deepak Sharma","","Bangalore","560050","Karnataka"
+
+11.
+select name from clnt_mast
+where name like '_h%'
+
+"NAME"
+"Ahana Banerjee"
+"Chhya Banker"
+
+12.
+select * from sales_order
+where order_date like '%JUN%'
+
+"ORDER_NO","CLIENT_NO","ORDER_DATE","DELYDATE","ORDER_STATUS"
+"O19001","C00001","12-JUN-17","20-JUL-17","In Process"
+"O19002","C00002","25-JUN-17","27-JUL-17","Cancelled"
+
+13.
+select * from sales_order
+where client_no='C00001' or client_no='C00002'
+
+"ORDER_NO","CLIENT_NO","ORDER_DATE","DELYDATE","ORDER_STATUS"
+"O19001","C00001","12-JUN-17","20-JUL-17","In Process"
+"O19002","C00002","25-JUN-17","27-JUL-17","Cancelled"
+"O19003","C00001","03-APR-17","07-APR-17","Fulfilled"
+
+14.
+select * from product_master
+where sell_price > 500 and sell_price < 700
+
+"DESCRIPTION"
+"Cotton Jeans"
+
+15. 
+select name,city,state from clnt_mast
+where state <> 'Maharashtra'
+
+"NAME","CITY","STATE"
+"Ahana Banerjee","Kolkata","West Bengal"
+"Mamta Paul","Chennai","Tamil Nadu"
+"Ashwini Joshi","Bangalore","Karnataka"
+"Deepak Sharma","Bangalore","Karnataka"
+
+16.
+select description, sell_price*15 
+as new_price from product_master
+where sell_price > 500
+
+"PRODUCT_NO","DESCRIPTION","PROFIT_PERCENT","UNIT_MEASURE","SELL_PRICE","COST_PRICE"
+"P00001","T-Shirt","5","Piece","350","250"
+"P0345","Shirts","6","Piece","500","350"
+"P06734","Cotton Jeans","5","Piece","600","450"
+"P07868","Trousers","2","Piece","850","550"
+"P07885","Pull Overs","2.5","Piece","700","450"
+
+17.
+select count(sell_price) from product_master
+where sell_price < = 500
+
+"2"
+
+18.
+select name,order_no,order_date,to_char(to_date(order_date,'dd/mm/yyyy'), 'DY') as day
+from sales_order join clnt_mast on clnt_mast.client_no=sales_order.client_no
+
+"NAME","ORDER_NO","ORDER_DATE","DAY"
+"Ahana Banerjee","O19003","03-APR-17","SAT"
+"Ahana Banerjee","O19001","12-JUN-17","SAT"
+"Mamta Paul","O19002","25-JUN-17","FRI"
+"Chhya Banker","O46865","18-FEB-17","THU"
+"Ashwini Joshi","O46866","20-MAY-17","THU"
+
+19. From football tables
+select matchid,mdate,count(*)
+from game join goal on goal.matchid=game.id
+where teamid='GER'
+group by mdate,matchid
+
+"MATCHID","MDATE","COUNT(*)"
+"1008","09-JUN-12","1"
+"1012","17-JUN-12","2"
+"1010","13-JUN-12","2"
